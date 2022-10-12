@@ -5,30 +5,35 @@ import java.util.List;
 
 public class ListaInterpretes {
 
-    private List<Interprete> inter;
+    private List<Interprete> listaInterpretes;
         
         public ListaInterpretes()
         {
-             inter = new ArrayList<Interprete>();
+             listaInterpretes = new ArrayList<Interprete>();
         }
-    
-    
+
     /**
-    * Añade un intérprete a la lista
-    * @param inter Intérprete a añadir
+    * Aï¿½ade un intï¿½rprete a la lista
+    * @param inter Intï¿½rprete a aï¿½adir
     */
     public void anadirInterprete(Interprete inter) {
-        /**
-         * Busca un intérprete en la lista y lo devuelve
-         * @param nombre Nombre del intérprete a buscar
-         * @return el Interprete (si está en la lista), null en caso contrario
-         */
+        listaInterpretes.add(inter);
     }
+
+    /**
+    * Busca un intï¿½rprete en la lista y lo devuelve
+    * @param nombre Nombre del intï¿½rprete a buscar
+    * @return el Interprete (si estï¿½ en la lista), null en caso contrario
+    */
    
     public Interprete buscarInterprete(String nombre) {
+        Interprete actual;
+        for (int i = 0; i < listaInterpretes.size(); i++) {
+                actual = listaInterpretes.get(i);
+                if (actual.getNombre().equals(nombre)) {
+                    return actual;
+                }
+        }
         return null;
     }
-    
-    
-
 }

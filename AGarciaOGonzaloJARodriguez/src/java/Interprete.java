@@ -3,7 +3,7 @@ package java;
 public class Interprete {
     
     
-    String nombre;
+    private String nombre;
     private ListaPeliculas peliculasHechas;
     private ListaInterpretes inter;        
     
@@ -32,6 +32,22 @@ public class Interprete {
 
     public void anadirPelicula(Pelicula pel) {
         peliculasHechas.anadirPelicula(pel);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public ListaPeliculas getPeliculasHechas() {
+        return peliculasHechas;
+    }
+
+    public void setPeliculasHechas(ListaPeliculas peliculasHechas) {
+        this.peliculasHechas = peliculasHechas;
     }
     
 }
