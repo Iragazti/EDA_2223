@@ -1,14 +1,19 @@
 package java;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+
 public class ListaPeliculas {
 
-	public ListaPeliculas() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+private List<Pelicula> pelis;
+    
+    public ListaPeliculas()
+    {
+         pelis = new ArrayList<Pelicula>();
+    }
+    
+  
 
 }
