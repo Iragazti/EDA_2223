@@ -1,6 +1,16 @@
 package java;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListaInterpretes {
+
+    private List<Interprete> inter;
+        
+        public ListaInterpretes()
+        {
+             inter = new ArrayList<Interprete>();
+        }
     
     
     /**
