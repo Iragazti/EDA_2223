@@ -4,15 +4,12 @@ public class Interprete {
     
     
     String nombre;
-    String peliculasHechas;
+    private ListaPeliculas peliculasHechas;
+    private ListaInterpretes inter;        
     
-    
-  private ListaInterpretes inter;        
-    
-    public Interprete (String nombre , String peliculasHechas) {
+    public Interprete (String nombre , ListaPeliculas peliculasHechas) {
         super();
         this.nombre = nombre;
-        this.peliculasHechas = peliculasHechas;
         this.inter = new ListaInterpretes();
     }
 
@@ -21,18 +18,20 @@ public class Interprete {
     }
     
     /**
-    * Calcula y asigna el rating del intérprete en base al rating de sus películas
+    * Calcula y asigna el rating del intï¿½rprete en base al rating de sus pelï¿½culas
     */
+    
     public void calcularRating() {// Ver ayuda en siguiente apartado
     /**
-    * Añade una película al intérprete
-    * @param pel Película a añadir
-    * POST: El rating del intérprete NO se modifica en este momento
+    * Aï¿½ade una pelï¿½cula al intï¿½rprete
+    * @param pel Pelï¿½cula a aï¿½adir
+    * POST: El rating del intï¿½rprete NO se modifica en este momento
     */
         
     }
+
     public void anadirPelicula(Pelicula pel) {
-        
+        peliculasHechas.anadirPelicula(pel);
     }
     
 }
