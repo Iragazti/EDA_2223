@@ -7,13 +7,14 @@ private static CatalogoIMDB miCatalogo;
     
     
     private ListaPeliculas listaPeliculas;
+    private ListaInterpretes listaInterpretes;
     
     
     public CatalogoIMDB() {
       
         super();
         this.listaPeliculas = new ListaPeliculas();
-        
+        this.listaInterpretes = new ListaInterpretes();
     }
     
     public static CatalogoIMDB getInstance()
@@ -32,38 +33,38 @@ private static CatalogoIMDB miCatalogo;
 */
     
     /**
-    * Carga las películas del catálogo desde el fichero indicado
-    * @param nomF Nombre del fichero que contiene las películas
+    * Carga las pelï¿½culas del catï¿½logo desde el fichero indicado
+    * @param nomF Nombre del fichero que contiene las pelï¿½culas
     */
     public void cargarPeliculas(String nomF) {// Ver ayuda en siguiente apartado
     /**
-    * Carga los intérpretes del catálogo desde el fichero indicado
-    * POST: se han cargado los intérpretes y se han calculado sus ratings
-    * @param nomF Nombre del fichero que contiene los intérpretes
+    * Carga los intï¿½rpretes del catï¿½logo desde el fichero indicado
+    * POST: se han cargado los intï¿½rpretes y se han calculado sus ratings
+    * @param nomF Nombre del fichero que contiene los intï¿½rpretes
     */
     }
     
     
     public void cargarInterpretes(String nomF) {
     /**
-    * Imprime por pantalla el nº de intérpretes de una película y sus nombres
-    * @param titulo Título de la película
+    * Imprime por pantalla el nï¿½ de intï¿½rpretes de una pelï¿½cula y sus nombres
+    * @param titulo Tï¿½tulo de la pelï¿½cula
     */
         
     }
     public void imprimirInfoPelicula(String titulo) {
     /**
-    * Imprime por pantalla el nombre del intérprete, su rating y los títulos
-    * de sus películas.
-    * @param nombre Nombre del intérprete
+    * Imprime por pantalla el nombre del intï¿½rprete, su rating y los tï¿½tulos
+    * de sus pelï¿½culas.
+    * @param nombre Nombre del intï¿½rprete
     */
         
     }
     public void imprimirInfoInterprete(String nombre) {
     /**
-    * Añade un nuevo voto a una película
-    * PRE: el valor del voto está entre 0.0 y 10.0.
-    * @param titulo Título de la película
+    * Aï¿½ade un nuevo voto a una pelï¿½cula
+    * PRE: el valor del voto estï¿½ entre 0.0 y 10.0.
+    * @param titulo Tï¿½tulo de la pelï¿½cula
     * @param voto Valor del voto
     */
     }
