@@ -1,28 +1,30 @@
 package fase1;
 
 
+import java.CatalogoIMDB;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class AplicacionIMDB {
 	
 	public static void main(String[] args){
-
-          //TO DO: ...
-		
-	    //TO DO: Cargar películas	
-
-	    //TO DO Cargar intérpretes
+		CatalogoIMDB catalogo = new CatalogoIMDB();
+        try {
+			catalogo.cargarInterpretes("../cast_small.txt");
+			catalogo.cargarPeliculas("../films_small.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	
-		
-		//Menú
+		//Menï¿½
 		Scanner sc = new Scanner(System.in);
 		int opcion=-1;
 		
 		while(opcion!=0) {
-			System.out.println("Escoja una opción:");
-			System.out.println("1. Mostrar información de película");
-			System.out.println("2. Mostrar información de intérprete");
-			System.out.println("3. Añadir voto a película");
+			System.out.println("Escoja una opciï¿½n:");
+			System.out.println("1. Mostrar informaciï¿½n de pelï¿½cula");
+			System.out.println("2. Mostrar informaciï¿½n de intï¿½rprete");
+			System.out.println("3. Aï¿½adir voto a pelï¿½cula");
 
 			System.out.println("0. Salir");
 			opcion = Integer.parseInt(sc.nextLine());
