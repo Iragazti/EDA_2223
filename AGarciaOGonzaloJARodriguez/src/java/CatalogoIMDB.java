@@ -43,7 +43,7 @@ private static CatalogoIMDB miCatalogo;
     public void cargarPeliculas(String nomF) throws FileNotFoundException {// Ver ayuda en siguiente apartado
         Scanner entrada = new Scanner(new FileReader(nomF));
         String linea = "";
-        String[] datos = new String[4]; //Array donde cada posición contendrá los datos de cada película.
+        String[] datos = null; //Array donde cada posición contendrá los datos de cada película.
         while (entrada.hasNext()) {
             linea = entrada.nextLine();
             datos = linea.split("\t");
@@ -62,13 +62,15 @@ private static CatalogoIMDB miCatalogo;
         
         Scanner entrada = new Scanner(new FileReader(nomF));
         String linea = "";
-        String[] datos = linea.split("->");//Separa el nombre del intérprete de sus películas
+        String[] datos = null;
         ListaPeliculas pelisDeInterprete = new ListaPeliculas();
-        Pelicula peliculaActual;
-    
+        Pelicula peliculaActual = null;
+        String[] datosPelis = null;
+
         while (entrada.hasNext()) {
             linea = entrada.nextLine();
-            String[] datosPelis = datos[1].split("\\|\\|"); //Separa todas las películas del artista y las añade a una array
+            datos = linea.split("->"); //Separa el nombre del intérprete de sus películas
+            datosPelis = datos[1].split("\\|\\|"); //Separa todas las películas del artista y las añade a una array
             
             for (int i = 0; i < datosPelis.length; i++) { //Añade cada elemento del array a la estructura pelisDeInterprete.
                 peliculaActual = this.listaPeliculas.buscarPelicula(datosPelis[i]);
