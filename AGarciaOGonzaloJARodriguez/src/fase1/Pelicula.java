@@ -27,7 +27,9 @@ public class Pelicula  {
     public ListaPeliculas getPelis() {
         return pelis;
     }
-
+    public ListaInterpretes getInterpretes(){
+        return this.interpretes;
+    }
    
    
     public void anadirInterprete(Interprete inter) {

@@ -41,4 +41,7 @@ public class ListaInterpretes {
     public int getSize(){
         return this.size;
     }
+    public Interprete getInterprete(int index){
+        return this.listaInterpretes.get(index);
+    }
 }

@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+
 public class CatalogoIMDB {
 
 private static CatalogoIMDB miCatalogo;
@@ -43,10 +45,13 @@ private static CatalogoIMDB miCatalogo;
         Scanner entrada = new Scanner(new FileReader(nomF));
         String linea = "";
         String[] datos = null; //Array donde cada posición contendrá los datos de cada película.
+        Pelicula peli = null;
         while (entrada.hasNext()) {
             linea = entrada.nextLine();
-            datos = linea.split("\t");
-            this.listaPeliculas.anadirPelicula(new Pelicula(datos[0], Integer.valueOf(datos[1]), Double.valueOf(datos[2]), Integer.valueOf(datos[3])));
+            datos = linea.split("\u0009");
+            peli = new Pelicula(datos[0], Integer.valueOf(datos[1]), Double.valueOf(datos[2]), Integer.valueOf(datos[3]));
+            this.listaPeliculas.anadirPelicula(peli);
+
         }
         
     }
@@ -65,7 +70,8 @@ private static CatalogoIMDB miCatalogo;
         ListaPeliculas pelisDeInterprete = new ListaPeliculas();
         Pelicula peliculaActual = null;
         String[] datosPelis = null;
-
+        Interprete interpreteActual = null;
+        
         while (entrada.hasNext()) {
             linea = entrada.nextLine();
             datos = linea.split("->"); //Separa el nombre del intérprete de sus películas
@@ -75,8 +81,16 @@ private static CatalogoIMDB miCatalogo;
                 peliculaActual = this.listaPeliculas.buscarPelicula(datosPelis[i]);
                 pelisDeInterprete.anadirPelicula(peliculaActual);
             }
+
+            interpreteActual = new Interprete(datos[0], pelisDeInterprete);
+            this.listaInterpretes.anadirInterprete(interpreteActual);
             
-            this.listaInterpretes.anadirInterprete(new Interprete(datos[0], pelisDeInterprete));
+            // Esta parte carga el intérprete actual en la lista de intérpretes de cada una de sus películas.
+            for (int i = 0; i < pelisDeInterprete.getSize(); i++) {
+                peliculaActual = pelisDeInterprete.getPelicula(i);
+                peliculaActual.anadirInterprete(interpreteActual);
+            }
+            
         }
         entrada.close();
         
@@ -87,9 +101,11 @@ private static CatalogoIMDB miCatalogo;
     * @param nombre Nombre del int�rprete
     */
     public void imprimirInfoPelicula(String titulo) {
-        
-        
-        //TODO
+        Pelicula pelicula = listaPeliculas.buscarPelicula(titulo);
+        System.out.println(String.format("Título: %s\nAño: %d\nRating: %f\nNum. votos: %d\nTotal de intérpretes: %d", titulo, thisPelicula.getAno(), thisPelicula.getRating(), thisPelicula.getVotos(), thisPelicula.getInterpretes().getSize()));
+        for (int i = 0; i < pelicula.getInterpretes().getSize(); i++) {
+            System.out.println(pelicula.getInterpretes().getInterprete(i));
+        }
     }
     /**
     * A�ade un nuevo voto a una pel�cula
@@ -99,9 +115,8 @@ private static CatalogoIMDB miCatalogo;
     */
     public void imprimirInfoInterprete(String nombre) {
         double rating = listaInterpretes.buscarInterprete(nombre).getRating();
-        
         ListaPeliculas peliculasHechas = listaInterpretes.buscarInterprete(nombre).getPeliculasHechas();
-        System.out.println(String.format("Nombre: %s\nRating: %d\nTotal de películas del intérprete: %d", nombre, rating, peliculasHechas.getSize()));
+        System.out.println(String.format("Nombre: %s\nRating: %f\nTotal de películas del intérprete: %d", nombre, rating, peliculasHechas.getSize()));
         for (int i = 0; i < peliculasHechas.getSize(); i++) {
             System.out.println(peliculasHechas.getPelicula(i).getTitulo()); 
         }
