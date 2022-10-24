@@ -8,30 +8,29 @@ import java.util.List;
 public class ListaPeliculas {
 
 private List<Pelicula> pelis;
+private int size = 0;
     
     public ListaPeliculas()
     {
          pelis = new ArrayList<Pelicula>();
     }
     
-    
-    
-    
-    
+
     /**
-    * Añade una película a la lista
-    * @param pel Película a añadir
+    * Aï¿½ade una pelï¿½cula a la lista
+    * @param pel Pelï¿½cula a aï¿½adir
     */
     public void anadirPelicula(Pelicula pel) {
         pelis.add(pel);
+        size++;
     
     }
     
     
     /**
-     * Busca una película en la lista y la devuelve
-     * @param titulo Título de la película a buscar
-     * @return la Película (si está en la lista), null en caso contrario
+     * Busca una pelï¿½cula en la lista y la devuelve
+     * @param titulo Tï¿½tulo de la pelï¿½cula a buscar
+     * @return la Pelï¿½cula (si estï¿½ en la lista), null en caso contrario
      * 
      */
     public Pelicula buscarPelicula(String titulo) {
@@ -46,6 +45,15 @@ private List<Pelicula> pelis;
         return null;
         
     }
+
+    public int getSize(){
+        return this.size;
+    }
         
+    public Pelicula getPelicula(int index){
+        return pelis.get(index);
+
+    }
+
 
 }

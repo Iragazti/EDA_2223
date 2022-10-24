@@ -12,7 +12,8 @@ public class Pelicula  {
     
    
     private ListaPeliculas pelis;        
-    
+    private ListaInterpretes interpretes;
+
     public Pelicula (String titulo , int ano ,double rating, int votos) {
         super();
         this.titulo = titulo;
@@ -20,6 +21,7 @@ public class Pelicula  {
         this.rating= rating;
         this.votos = votos;
         this.pelis = new ListaPeliculas();
+        interpretes = new ListaInterpretes();
     }
 
     public ListaPeliculas getPelis() {
@@ -28,21 +30,14 @@ public class Pelicula  {
 
    
    
-    
-   
     public void anadirInterprete(Interprete inter) {
-        
-        /**
-        * Añade un intérprete a la película
-        * @param inter Intérprete a añadir
-        */
-   
+        interpretes.anadirInterprete(inter);
         
     }
     public void anadirVoto(float voto) {// Ver ayuda en siguiente apartado
         /**
-         * Añade un nuevo voto a la película.
-         * POST: se han recalculado los ratings de sus intérpretes
+         * Aï¿½ade un nuevo voto a la pelï¿½cula.
+         * POST: se han recalculado los ratings de sus intï¿½rpretes
          * @param voto
          */ 
     }

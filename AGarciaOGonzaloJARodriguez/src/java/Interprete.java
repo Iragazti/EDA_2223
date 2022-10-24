@@ -6,7 +6,8 @@ public class Interprete {
     private String nombre;
     private ListaPeliculas peliculasHechas;
     private ListaInterpretes inter;        
-    
+    private double rating;
+
     public Interprete (String nombre , ListaPeliculas peliculasHechas) {
         super();
         this.nombre = nombre;
@@ -22,11 +23,16 @@ public class Interprete {
     */
     
     public void calcularRating() {// Ver ayuda en siguiente apartado
-    /**
-    * A�ade una pel�cula al int�rprete
-    * @param pel Pel�cula a a�adir
-    * POST: El rating del int�rprete NO se modifica en este momento
-    */
+        int sumRating = 0;
+        int sumVotos = 0;
+        for (int i = 0; i < peliculasHechas.getSize(); i++) {
+            if (peliculasHechas.getPelicula(i).getVotos() > 0) {
+                
+                sumRating += peliculasHechas.getPelicula(i).getRating() * peliculasHechas.getPelicula(i).getVotos();
+                sumVotos += peliculasHechas.getPelicula(i).getVotos();
+            }
+        }
+        this.rating = sumRating / sumVotos;
         
     }
 

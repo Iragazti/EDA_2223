@@ -6,6 +6,7 @@ import java.util.List;
 public class ListaInterpretes {
 
     private List<Interprete> listaInterpretes;
+    private int size = 0;
         
         public ListaInterpretes()
         {
@@ -18,6 +19,7 @@ public class ListaInterpretes {
     */
     public void anadirInterprete(Interprete inter) {
         listaInterpretes.add(inter);
+        size += 1;
     }
 
     /**
@@ -35,5 +37,8 @@ public class ListaInterpretes {
                 }
         }
         return null;
+    }
+    public int getSize(){
+        return this.size;
     }
 }
