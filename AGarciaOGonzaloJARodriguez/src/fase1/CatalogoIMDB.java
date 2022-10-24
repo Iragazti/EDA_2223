@@ -102,7 +102,7 @@ private static CatalogoIMDB miCatalogo;
     */
     public void imprimirInfoPelicula(String titulo) {
         Pelicula pelicula = listaPeliculas.buscarPelicula(titulo);
-        System.out.println(String.format("Título: %s\nAño: %d\nRating: %f\nNum. votos: %d\nTotal de intérpretes: %d", titulo, thisPelicula.getAno(), thisPelicula.getRating(), thisPelicula.getVotos(), thisPelicula.getInterpretes().getSize()));
+        System.out.println(String.format("Título: %s\nAño: %d\nRating: %f\nNum. votos: %d\nTotal de intérpretes: %d", titulo, pelicula.getAno(), pelicula.getRating(), pelicula.getVotos(), pelicula.getInterpretes().getSize()));
         for (int i = 0; i < pelicula.getInterpretes().getSize(); i++) {
             System.out.println(pelicula.getInterpretes().getInterprete(i));
         }
