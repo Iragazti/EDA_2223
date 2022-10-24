@@ -36,8 +36,15 @@ private List<Pelicula> pelis;
      */
     public Pelicula buscarPelicula(String titulo) {
         
-        
+        for( int i=0; i<pelis.size() ; i++) {
+           
+            if(pelis.get(i).getTitulo().equals(titulo)) {
+                return pelis.get(i);
+            }
+            
+        }
         return null;
+        
     }
         
 

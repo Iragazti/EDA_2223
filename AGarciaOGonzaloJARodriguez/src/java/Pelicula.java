@@ -10,7 +10,7 @@ public class Pelicula  {
         
     //MIRAR UML
     
-    //webs con la que esta web esta enlazada
+   
     private ListaPeliculas pelis;        
     
     public Pelicula (String titulo , int ano ,double rating, int votos) {
