@@ -1,4 +1,4 @@
-package java;
+package fase1;
 
 import java.io.DataInputStream;
 import java.io.FileNotFoundException;
@@ -79,6 +79,7 @@ private static CatalogoIMDB miCatalogo;
             
             this.listaInterpretes.anadirInterprete(new Interprete(datos[0], pelisDeInterprete));
         }
+        entrada.close();
         
     } 
     public void imprimirInfoPelicula(String titulo) {

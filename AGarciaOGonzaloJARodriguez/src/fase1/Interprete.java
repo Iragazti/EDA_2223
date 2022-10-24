@@ -1,4 +1,4 @@
-package java;
+package fase1;
 
 public class Interprete {
     
