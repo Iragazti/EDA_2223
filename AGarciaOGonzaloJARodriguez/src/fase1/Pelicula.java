@@ -34,12 +34,14 @@ public class Pelicula  {
         interpretes.anadirInterprete(inter);
         
     }
+    /**
+     * A�ade un nuevo voto a la pel�cula.
+     * POST: se han recalculado los ratings de sus int�rpretes
+     * @param voto
+     */ 
     public void anadirVoto(float voto) {// Ver ayuda en siguiente apartado
-        /**
-         * A�ade un nuevo voto a la pel�cula.
-         * POST: se han recalculado los ratings de sus int�rpretes
-         * @param voto
-         */ 
+    
+        this.rating = (this.rating*this.votos + voto)/(this.votos+1);
     }
 
     public String getTitulo() {
@@ -61,8 +63,7 @@ public class Pelicula  {
     public double getRating() {
         return rating;
     }
-
-    public void setRating(double rating) {
+    public void setRating(double rating){
         this.rating = rating;
     }
 

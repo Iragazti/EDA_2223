@@ -14,7 +14,6 @@ private static CatalogoIMDB miCatalogo;
     
     
     public CatalogoIMDB() {
-      
         super();
         this.listaPeliculas = new ListaPeliculas();
         this.listaInterpretes = new ListaInterpretes();
@@ -82,24 +81,33 @@ private static CatalogoIMDB miCatalogo;
         entrada.close();
         
     } 
-    public void imprimirInfoPelicula(String titulo) {
     /**
     * Imprime por pantalla el nombre del int�rprete, su rating y los t�tulos
     * de sus pel�culas.
     * @param nombre Nombre del int�rprete
     */
+    public void imprimirInfoPelicula(String titulo) {
         
+        
+        //TODO
     }
-    public void imprimirInfoInterprete(String nombre) {
     /**
     * A�ade un nuevo voto a una pel�cula
     * PRE: el valor del voto est� entre 0.0 y 10.0.
     * @param titulo T�tulo de la pel�cula
     * @param voto Valor del voto
     */
+    public void imprimirInfoInterprete(String nombre) {
+        double rating = listaInterpretes.buscarInterprete(nombre).getRating();
+        
+        ListaPeliculas peliculasHechas = listaInterpretes.buscarInterprete(nombre).getPeliculasHechas();
+        System.out.println(String.format("Nombre: %s\nRating: %d\nTotal de películas del intérprete: %d", nombre, rating, peliculasHechas.getSize()));
+        for (int i = 0; i < peliculasHechas.getSize(); i++) {
+            System.out.println(peliculasHechas.getPelicula(i).getTitulo()); 
+        }
     }
     public void anadirVoto(String titulo, float voto) {
-    
-        
+        Pelicula peli = listaPeliculas.buscarPelicula(titulo);
+        peli.anadirVoto(voto);
     }
 }

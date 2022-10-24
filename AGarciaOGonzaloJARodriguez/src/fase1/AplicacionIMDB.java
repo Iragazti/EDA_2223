@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class AplicacionIMDB {
 	
 	private static AplicacionIMDB appIMDB;
-
+	private Scanner sc;
 	public static AplicacionIMDB getInstance(){
 		if (appIMDB == null) {
 			appIMDB = new AplicacionIMDB();
@@ -36,34 +36,33 @@ public class AplicacionIMDB {
 			System.out.println("3. A�adir voto a pel�cula");
 
 			System.out.println("0. Salir");
+			sc = new Scanner(System.in);
 			opcion = Integer.parseInt(sc.nextLine());
 			switch(opcion) {
+				
 			   case 1: 
 			   		System.out.println("Introduzca el nombre de una película:");
-			   		Scanner e1 = new Scanner(System.in);
-			   		String strPeli = e1.nextLine();
+			   		String strPeli = sc.nextLine();
 			   		catalogo.imprimirInfoPelicula(strPeli);
 			        break;
 
 				case 2:
 					System.out.println("Introduzca el nombre de un intérprete:");
-					Scanner e2 = new Scanner(System.in);
-					String strInter = e2.nextLine();
+					String strInter = sc.nextLine();
 					catalogo.imprimirInfoInterprete(strInter);
 					break;
 				
 				case 3:
-					Scanner e3 = new Scanner(System.in);
 					System.out.println("Introduzca el nombre de una película:");
-					String peli3 = e3.nextLine();
+					String stPeli = sc.nextLine();
 					System.out.println("Introducir puntuación entre 0.0 y 10.0:");
-					float valor = e3.nextFloat();
-					catalogo.anadirVoto(peli3, valor);
-				break;
+					float puntuacion = sc.nextFloat();
+					catalogo.anadirVoto(stPeli, puntuacion);
+					break;
 				case 0:
-				break;
+					break;
 				default:
-				break;
+					break;
 			}
 		}
 		sc.close();

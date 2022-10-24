@@ -12,6 +12,7 @@ public class Interprete {
         super();
         this.nombre = nombre;
         this.inter = new ListaInterpretes();
+        this.peliculasHechas = peliculasHechas;
     }
 
     public ListaInterpretes getInterpretes() {
@@ -54,6 +55,9 @@ public class Interprete {
 
     public void setPeliculasHechas(ListaPeliculas peliculasHechas) {
         this.peliculasHechas = peliculasHechas;
+    }
+    public double getRating(){
+        return this.rating;
     }
     
 }
