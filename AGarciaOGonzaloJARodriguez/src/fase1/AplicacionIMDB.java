@@ -7,6 +7,16 @@ import java.util.Scanner;
 
 public class AplicacionIMDB {
 	
+	private static AplicacionIMDB appIMDB;
+
+	public static AplicacionIMDB getInstance(){
+		if (appIMDB == null) {
+			appIMDB = new AplicacionIMDB();
+		}
+			return appIMDB;
+	}
+
+
 	public static void main(String[] args){
 		CatalogoIMDB catalogo = new CatalogoIMDB();
         try {
