@@ -18,7 +18,7 @@ public class Pelicula  {
         super();
         this.titulo = titulo;
         this.ano = ano;
-        this.rating= rating;
+        this.rating = rating;
         this.votos = votos;
         this.pelis = new ListaPeliculas();
         interpretes = new ListaInterpretes();

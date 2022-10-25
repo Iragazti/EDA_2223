@@ -1,16 +1,12 @@
 package fase1;
 
-import java.io.DataInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-
 public class CatalogoIMDB {
 
-private static CatalogoIMDB miCatalogo;
-
+    private static CatalogoIMDB miCatalogo;
     private ListaPeliculas listaPeliculas;
     private ListaInterpretes listaInterpretes;
     
@@ -42,16 +38,17 @@ private static CatalogoIMDB miCatalogo;
      * @throws FileNotFoundException
     */
     public void cargarPeliculas(String nomF) throws FileNotFoundException {// Ver ayuda en siguiente apartado
-        Scanner entrada = new Scanner(new FileReader(nomF));
+        
+        Scanner entrada = new Scanner(new FileReader(nomF)); //O(N)
         String linea = "";
         String[] datos = null; //Array donde cada posición contendrá los datos de cada película.
         Pelicula peli = null;
-        while (entrada.hasNext()) {
+        
+        while (entrada.hasNext()) { //O(N)
             linea = entrada.nextLine();
             datos = linea.split("\u0009");
             peli = new Pelicula(datos[0], Integer.valueOf(datos[1]), Double.valueOf(datos[2]), Integer.valueOf(datos[3]));
             this.listaPeliculas.anadirPelicula(peli);
-
         }
         
     }
@@ -67,16 +64,16 @@ private static CatalogoIMDB miCatalogo;
         Scanner entrada = new Scanner(new FileReader(nomF));
         String linea = "";
         String[] datos = null;
-        ListaPeliculas pelisDeInterprete = new ListaPeliculas();
-        Pelicula peliculaActual = null;
         String[] datosPelis = null;
+        Pelicula peliculaActual = null;
+        ListaPeliculas pelisDeInterprete = null;
         Interprete interpreteActual = null;
         
         while (entrada.hasNext()) {
             linea = entrada.nextLine();
             datos = linea.split("->"); //Separa el nombre del intérprete de sus películas
             datosPelis = datos[1].split("\\|\\|"); //Separa todas las películas del artista y las añade a una array
-            
+            pelisDeInterprete = new ListaPeliculas();
             for (int i = 0; i < datosPelis.length; i++) { //Añade cada elemento del array a la estructura pelisDeInterprete.
                 peliculaActual = this.listaPeliculas.buscarPelicula(datosPelis[i]);
                 pelisDeInterprete.anadirPelicula(peliculaActual);
@@ -100,11 +97,11 @@ private static CatalogoIMDB miCatalogo;
     * de sus pel�culas.
     * @param nombre Nombre del int�rprete
     */
-    public void imprimirInfoPelicula(String titulo) {
-        Pelicula pelicula = listaPeliculas.buscarPelicula(titulo);
+    public void imprimirInfoPelicula(String titulo) { //O(N)
+        Pelicula pelicula = listaPeliculas.buscarPelicula(titulo); 
         System.out.println(String.format("Título: %s\nAño: %d\nRating: %f\nNum. votos: %d\nTotal de intérpretes: %d", titulo, pelicula.getAno(), pelicula.getRating(), pelicula.getVotos(), pelicula.getInterpretes().getSize()));
         for (int i = 0; i < pelicula.getInterpretes().getSize(); i++) {
-            System.out.println(pelicula.getInterpretes().getInterprete(i));
+            System.out.println(pelicula.getInterpretes().getInterprete(i).getNombre());
         }
     }
     /**
@@ -113,9 +110,10 @@ private static CatalogoIMDB miCatalogo;
     * @param titulo T�tulo de la pel�cula
     * @param voto Valor del voto
     */
-    public void imprimirInfoInterprete(String nombre) {
-        double rating = listaInterpretes.buscarInterprete(nombre).getRating();
-        ListaPeliculas peliculasHechas = listaInterpretes.buscarInterprete(nombre).getPeliculasHechas();
+    public void imprimirInfoInterprete(String nombre) { //O(N)
+        Interprete interprete = listaInterpretes.buscarInterprete(nombre);
+        double rating = interprete.getRating();
+        ListaPeliculas peliculasHechas = interprete.getPeliculasHechas();
         System.out.println(String.format("Nombre: %s\nRating: %f\nTotal de películas del intérprete: %d", nombre, rating, peliculasHechas.getSize()));
         for (int i = 0; i < peliculasHechas.getSize(); i++) {
             System.out.println(peliculasHechas.getPelicula(i).getTitulo()); 

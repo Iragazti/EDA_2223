@@ -26,7 +26,7 @@ public class Interprete {
     public void calcularRating() {// Ver ayuda en siguiente apartado
         int sumRating = 0;
         int sumVotos = 0;
-        for (int i = 0; i < peliculasHechas.getSize(); i++) {
+        for (int i = 0; i < peliculasHechas.getSize(); i++) { //O(N)
             if (peliculasHechas.getPelicula(i).getVotos() > 0) {
                 
                 sumRating += peliculasHechas.getPelicula(i).getRating() * peliculasHechas.getPelicula(i).getVotos();

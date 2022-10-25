@@ -1,13 +1,13 @@
 package fase1;
-
-
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class AplicacionIMDB {
 	
-	private static AplicacionIMDB appIMDB;
-	private Scanner sc;
+	private static AplicacionIMDB appIMDB = null;
+	private Scanner sc = null;
+	
+	
 	public static AplicacionIMDB getInstance(){
 		if (appIMDB == null) {
 			appIMDB = new AplicacionIMDB();
@@ -19,8 +19,8 @@ public class AplicacionIMDB {
 	public static void main(String[] args){
 		CatalogoIMDB catalogo = new CatalogoIMDB();
         try {
-			catalogo.cargarPeliculas("C:\\Users\\Agus\\Documents\\GitHub\\EDA_2223\\AGarciaOGonzaloJARodriguez\\src\\fase1\\ficheros\\films_small.txt");
-			catalogo.cargarInterpretes("C:\\Users\\Agus\\Documents\\GitHub\\EDA_2223\\AGarciaOGonzaloJARodriguez\\src\\fase1\\ficheros\\cast_small.txt");
+			catalogo.cargarPeliculas("C:\\Users\\Agus\\Documents\\GitHub\\EDA_2223\\AGarciaOGonzaloJARodriguez\\src\\fase1\\ficheros\\films_tiny.txt");
+			catalogo.cargarInterpretes("C:\\Users\\Agus\\Documents\\GitHub\\EDA_2223\\AGarciaOGonzaloJARodriguez\\src\\fase1\\ficheros\\cast_tiny.txt");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

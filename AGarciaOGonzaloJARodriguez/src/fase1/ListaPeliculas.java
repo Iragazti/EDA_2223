@@ -1,9 +1,6 @@
 package fase1;
-
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 public class ListaPeliculas {
 
@@ -20,8 +17,8 @@ private int size = 0;
     * A�ade una pel�cula a la lista
     * @param pel Pel�cula a a�adir
     */
-    public void anadirPelicula(Pelicula pel) {
-        pelis.add(pel);
+    public void anadirPelicula(Pelicula pelicula) {
+        pelis.add(pelicula);
         size++;
     
     }
