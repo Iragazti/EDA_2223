@@ -24,13 +24,6 @@ public class CatalogoIMDB {
         
         return miCatalogo;
     }
-   /* 
-    public Pelicula getPeliculas() {
-        return listaPeliculas;
-    }
-    
-    
-*/
     
     /**
     * Carga las pel�culas del cat�logo desde el fichero indicado

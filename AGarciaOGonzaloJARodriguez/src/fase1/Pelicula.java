@@ -1,8 +1,7 @@
 package fase1;
 
 public class Pelicula  {
-    
-    
+
     private String titulo;
     private int ano;
     private double rating;

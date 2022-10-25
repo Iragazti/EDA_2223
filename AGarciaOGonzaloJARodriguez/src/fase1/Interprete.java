@@ -2,7 +2,6 @@ package fase1;
 
 public class Interprete {
     
-    
     private String nombre;
     private double rating;
     private ListaPeliculas peliculasHechas;
