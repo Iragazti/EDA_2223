@@ -29,9 +29,18 @@ public class Pelicula  {
      * POST: se han recalculado los ratings de sus int�rpretes
      * @param voto
      */ 
-    public void anadirVoto(float voto) {// Ver ayuda en siguiente apartado
-    
-        this.rating = (this.rating*this.votos + voto)/(this.votos+1);
+    public void anadirVoto(float rating) {// Ver ayuda en siguiente apartado.
+        
+        if (this.rating == -1) {
+            this.rating = rating;
+            votos = 1;
+        }
+        else{
+            this.votos = this.votos+1; 
+            this.rating = (this.rating*this.votos + rating)/(this.votos+1);
+        }
+        
+        
     }
 
 
