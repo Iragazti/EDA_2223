@@ -24,13 +24,6 @@ public class CatalogoIMDB {
         
         return miCatalogo;
     }
-   /* 
-    public Pelicula getPeliculas() {
-        return listaPeliculas;
-    }
-    
-    
-*/
     
     /**
     * Carga las pel�culas del cat�logo desde el fichero indicado
@@ -54,12 +47,14 @@ public class CatalogoIMDB {
     }
     
     /**
-     * Esta función carga todos los intérpretes de los archivos en listaInterpretes.
-     * Se lee el archivo línea por línea y se va tratando separando el artista con sus películas.
+     * Este método lee cada línea del fichero cargado en el parámetro y procesa cada línea.
+     * El proceso que sigue consiste en separar el intérprete de las películas donde ha participado.
+     * Guarda estos dos datos en la estructura 'datos'. Seguido de esto, separa una vez más cada una de las
+     * películas en 'datosPelis'.  
      * @param nomF el nombre del fichero a leer.
      * @throws FileNotFoundException Si el archivo no existe.
      */
-    public void cargarInterpretes(String nomF) throws FileNotFoundException {
+    public void cargarInterpretes(String nomF) throws FileNotFoundException { //O(N*M)
         
         Scanner entrada = new Scanner(new FileReader(nomF));
         String linea = "";
@@ -74,7 +69,8 @@ public class CatalogoIMDB {
             datos = linea.split("->"); //Separa el nombre del intérprete de sus películas
             datosPelis = datos[1].split("\\|\\|"); //Separa todas las películas del artista y las añade a una array
             pelisDeInterprete = new ListaPeliculas();
-            for (int i = 0; i < datosPelis.length; i++) { //Añade cada elemento del array a la estructura pelisDeInterprete.
+            
+            for (int i = 0; i < datosPelis.length; i++) {//O(N) N = datosPelis.length
                 peliculaActual = this.listaPeliculas.buscarPelicula(datosPelis[i]);
                 pelisDeInterprete.anadirPelicula(peliculaActual);
             }
@@ -83,7 +79,7 @@ public class CatalogoIMDB {
             this.listaInterpretes.anadirInterprete(interpreteActual);
             
             // Esta parte carga el intérprete actual en la lista de intérpretes de cada una de sus películas.
-            for (int i = 0; i < pelisDeInterprete.getSize(); i++) {
+            for (int i = 0; i < pelisDeInterprete.getSize(); i++) { //O(M) M = pelisDeInterprete.length;
                 peliculaActual = pelisDeInterprete.getPelicula(i);
                 peliculaActual.anadirInterprete(interpreteActual);
             }

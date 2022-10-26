@@ -2,21 +2,14 @@ package fase1;
 
 public class Interprete {
     
-    
     private String nombre;
-    private ListaPeliculas peliculasHechas;
-    private ListaInterpretes inter;        
     private double rating;
+    private ListaPeliculas peliculasHechas;
 
     public Interprete (String nombre , ListaPeliculas peliculasHechas) {
         super();
         this.nombre = nombre;
-        this.inter = new ListaInterpretes();
         this.peliculasHechas = peliculasHechas;
-    }
-
-    public ListaInterpretes getInterpretes() {
-        return inter;
     }
     
     /**

@@ -1,17 +1,11 @@
 package fase1;
 
 public class Pelicula  {
-    
-    
+
     private String titulo;
     private int ano;
     private double rating;
-    private int votos;
-        
-    //MIRAR UML
-    
-   
-    private ListaPeliculas pelis;        
+    private int votos;      
     private ListaInterpretes interpretes;
 
     public Pelicula (String titulo , int ano ,double rating, int votos) {
@@ -20,16 +14,10 @@ public class Pelicula  {
         this.ano = ano;
         this.rating = rating;
         this.votos = votos;
-        this.pelis = new ListaPeliculas();
-        interpretes = new ListaInterpretes();
+        this.interpretes = new ListaInterpretes();
     }
 
-    public ListaPeliculas getPelis() {
-        return pelis;
-    }
-    public ListaInterpretes getInterpretes(){
-        return this.interpretes;
-    }
+    
    
    
     public void anadirInterprete(Interprete inter) {
@@ -46,6 +34,8 @@ public class Pelicula  {
         this.rating = (this.rating*this.votos + voto)/(this.votos+1);
     }
 
+
+    // Setters y getters
     public String getTitulo() {
         return titulo;
     }
@@ -77,8 +67,8 @@ public class Pelicula  {
         this.votos = votos;
     }
 
-    public void setPelis(ListaPeliculas pelis) {
-        this.pelis = pelis;
+    public ListaInterpretes getInterpretes(){
+        return this.interpretes;
     }
 
 }
