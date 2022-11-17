@@ -19,8 +19,8 @@ public class AplicacionIMDB {
 	public static void main(String[] args){
 		CatalogoIMDB catalogo = new CatalogoIMDB();
         try {
-			catalogo.cargarPeliculas("C:\\Users\\Agus\\Desktop\\ficheros\\films_small.txt");
-			catalogo.cargarInterpretes("C:\\Users\\Agus\\Desktop\\ficheros\\cast_small.txt");
+			catalogo.cargarPeliculas("C:\\Users\\Agus\\Desktop\\ficheros\\films_tiny.txt");
+			catalogo.cargarInterpretes("C:\\Users\\Agus\\Desktop\\ficheros\\cast_tiny.txt");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

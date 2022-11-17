@@ -17,8 +17,8 @@ public class Interprete {
     */
     
     public void calcularRating() {// Ver ayuda en siguiente apartado
-        int sumRating = 0;
-        int sumVotos = 0;
+        double sumRating = 0;
+        double sumVotos = 0;
         for (int i = 0; i < peliculasHechas.getSize(); i++) { //O(N)
             if (peliculasHechas.getPelicula(i).getVotos() > 0) {
                 
@@ -26,7 +26,13 @@ public class Interprete {
                 sumVotos += peliculasHechas.getPelicula(i).getVotos();
             }
         }
-        this.rating = sumRating / sumVotos;
+        if (sumVotos == 0) {
+            this.rating = 0;
+        }
+        else{
+            this.rating = sumRating / sumVotos;
+        }
+        
         
     }
 

@@ -76,6 +76,7 @@ public class CatalogoIMDB {
             }
 
             interpreteActual = new Interprete(datos[0], pelisDeInterprete);
+            interpreteActual.calcularRating();
             this.listaInterpretes.anadirInterprete(interpreteActual);
             
             // Esta parte carga el intérprete actual en la lista de intérpretes de cada una de sus películas.
@@ -95,9 +96,14 @@ public class CatalogoIMDB {
     */
     public void imprimirInfoPelicula(String titulo) { //O(N)
         Pelicula pelicula = listaPeliculas.buscarPelicula(titulo); 
-        System.out.println(String.format("Título: %s\nAño: %d\nRating: %f\nNum. votos: %d\nTotal de intérpretes: %d", titulo, pelicula.getAno(), pelicula.getRating(), pelicula.getVotos(), pelicula.getInterpretes().getSize()));
-        for (int i = 0; i < pelicula.getInterpretes().getSize(); i++) {
-            System.out.println(pelicula.getInterpretes().getInterprete(i).getNombre());
+        if (pelicula == null) {
+            System.out.println("La película no ha sido hallada.");
+        }
+        else{
+            System.out.println(String.format("Título: %s\nAño: %d\nRating: %f\nNum. votos: %d\nTotal de intérpretes: %d", titulo, pelicula.getAno(), pelicula.getRating(), pelicula.getVotos(), pelicula.getInterpretes().getSize()));
+            for (int i = 0; i < pelicula.getInterpretes().getSize(); i++) {
+                System.out.println(pelicula.getInterpretes().getInterprete(i).getNombre());
+            }
         }
     }
     /**
@@ -108,15 +114,23 @@ public class CatalogoIMDB {
     */
     public void imprimirInfoInterprete(String nombre) { //O(N)
         Interprete interprete = listaInterpretes.buscarInterprete(nombre);
-        double rating = interprete.getRating();
-        ListaPeliculas peliculasHechas = interprete.getPeliculasHechas();
-        System.out.println(String.format("Nombre: %s\nRating: %f\nTotal de películas del intérprete: %d", nombre, rating, peliculasHechas.getSize()));
-        for (int i = 0; i < peliculasHechas.getSize(); i++) {
-            System.out.println(peliculasHechas.getPelicula(i).getTitulo()); 
+        if (interprete == null) {
+            System.out.println("El intérprete no ha sido hallado.");
+        }
+        else{
+            double rating = interprete.getRating();
+            ListaPeliculas peliculasHechas = interprete.getPeliculasHechas();
+            System.out.println(String.format("Nombre: %s\nRating: %f\nTotal de películas del intérprete: %d", nombre, rating, peliculasHechas.getSize()));
+            for (int i = 0; i < peliculasHechas.getSize(); i++) {
+                System.out.println(peliculasHechas.getPelicula(i).getTitulo()); 
+            }
         }
     }
     public void anadirVoto(String titulo, float voto) {
         Pelicula peli = listaPeliculas.buscarPelicula(titulo);
         peli.anadirVoto(voto);
+        for (int i = 0; i < peli.getInterpretes().getSize(); i++) {
+            peli.getInterpretes().getInterprete(i).calcularRating();
+        }
     }
 }
