@@ -7,7 +7,6 @@ public class Pelicula  {
     private double rating;
     private int votos;      
     private ListaInterpretes interpretes;
-    private int size;
 
     public Pelicula (String titulo , int ano ,double rating, int votos) {
         super();
@@ -22,9 +21,7 @@ public class Pelicula  {
    
    
     public void anadirInterprete(Interprete inter) {
-        
         interpretes.anadirInterprete(inter);
-        size++;
     }
     /**
      * A�ade un nuevo voto a la pel�cula.
@@ -47,9 +44,6 @@ public class Pelicula  {
 
 
     // Setters y getters
-    public int size(){
-        return size;
-    }
     public String getTitulo() {
         return titulo;
     }
