@@ -82,6 +82,7 @@ private int size = 0;
     * @return true si se ha eliminado, false en caso contrario
     */
     public boolean eliminarPelicula(Pelicula pel){
+        //TODO Completar
         return false;
     }
 
