@@ -14,8 +14,8 @@ private int size = 0;
     
 
     /**
-    * A�ade una pel�cula a la lista
-    * @param pel Pel�cula a a�adir
+    * Aï¿½ade una pelï¿½cula a la lista
+    * @param pel Pelï¿½cula a aï¿½adir
     */
     public void anadirPelicula(Pelicula pelicula) {
         pelis.add(pelicula);
@@ -25,12 +25,12 @@ private int size = 0;
     
     
     /**
-     * Busca una pel�cula en la lista y la devuelve
-     * @param titulo T�tulo de la pel�cula a buscar
-     * @return la Pel�cula (si est� en la lista), null en caso contrario
+     * Busca una pelï¿½cula en la lista y la devuelve
+     * @param titulo Tï¿½tulo de la pelï¿½cula a buscar
+     * @return la Pelï¿½cula (si estï¿½ en la lista), null en caso contrario
      * 
      */
-    public Pelicula buscarPelicula2(String titulo) {
+   /* public Pelicula buscarPelicula2(String titulo) {
         
         for( int i=0; i<pelis.size() ; i++) {
            
@@ -41,7 +41,7 @@ private int size = 0;
         }
         return null;
         
-    }
+    }*/
     /////////////////////////////////////optimizado
   public Pelicula buscarPelicula(String titulo) {
         
@@ -49,8 +49,8 @@ private int size = 0;
         int der = (pelis.size()-1);
         int medio= (izq+der)/2;
         
-        while (izq < der && !pelis.get(medio).getPelicula().equals(titulo) ) {
-            if(titulo.compareTo(pelis.get(medio).getPelicula()) < 0) {
+        while (izq < der && !pelis.get(medio).getTitulo().equals(titulo) ) {
+            if(titulo.compareTo(pelis.get(medio).getTitulo()) < 0) {
                 der = medio - 1;
             }else {
                 izq = medio + 1;
@@ -58,7 +58,7 @@ private int size = 0;
             medio = (izq + der) / 2;
         }
 
-        if(pelis.get(medio).getPelicula().equals(titulo)) {
+        if(pelis.get(medio).getTitulo().equals(titulo)) {
             return pelis.get(medio);
         }else {
             return null;
@@ -77,8 +77,8 @@ private int size = 0;
     
     
     /**
-    * Elimina de la lista la pel�cula pasada como par�metro.
-    * @param pel: pel�cula a eliminar
+    * Elimina de la lista la película pasada como parámetro.
+    * @param pel: película a eliminar
     * @return true si se ha eliminado, false en caso contrario
     */
     public boolean eliminarPelicula(Pelicula pel) {
