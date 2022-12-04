@@ -25,7 +25,6 @@ public class NodoABBInterpretes {
 		return right;
 	}
 
-	// SETTERS????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
 	public void setLeft(NodoABBInterpretes izquierdo) {
 		this.left = izquierdo;
 	}
@@ -64,7 +63,7 @@ public class NodoABBInterpretes {
 		}
 
 	}
-    //////////////////////////tengo dudas aqui///////////////////////
+ 
 	public Interprete buscarInterprete(String sInterprete) {
 		if (sInterprete.compareTo(this.info.getNombre()) == 0) {
 			return this.info;
@@ -88,9 +87,10 @@ public class NodoABBInterpretes {
 	}
 	   
 	 
-	//////////////////////////////como se hace con un string?
 
-	public NodoABBInterpretes eliminarInterprete(Interprete elem) {
+
+	public NodoABBInterpretes eliminarInterprete(String sInterprete) {
+		Interprete elem = buscarInterprete(sInterprete);
 		int comp = elem.compareTo(this.info);
  		if(comp==0) {//Caso (a): this es el nodo a eliminar
  			if(!this.hasLeft()) return this.right; //Caso (a1)
@@ -127,10 +127,6 @@ public class NodoABBInterpretes {
 	}
 
 
-
-
-	//////////////////////////////hay que ordenarlo¿?
-
 	public void inorden() {
 		if (this.hasLeft())
 			this.left.inorden();
@@ -138,21 +134,8 @@ public class NodoABBInterpretes {
 		if (this.hasRight())
 			this.right.inorden();
 	}
-	//////////////////////////////////////esta bien?
-	//indica si el nodo es hoja
-	public boolean isLeaf() {
-		return (left == null && right == null);
-	}
+	
+	
 
-	public int size(){
-		if(this.isLeaf()) return 1;
-		else{
-			int cont = 0;
-			if(this.hasLeft()) cont += this.left.size();
-			if(this.hasRight()) cont += this.right.size();
-			return cont;
-		}
-
-	}
 
 }

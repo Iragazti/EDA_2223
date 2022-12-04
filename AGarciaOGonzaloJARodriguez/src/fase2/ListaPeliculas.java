@@ -30,7 +30,7 @@ private int size = 0;
      * @return la Pelï¿½cula (si estï¿½ en la lista), null en caso contrario
      * 
      */
-    public Pelicula buscarPelicula(String titulo) {
+    public Pelicula buscarPelicula2(String titulo) {
         
         for( int i=0; i<pelis.size() ; i++) {
            
@@ -42,6 +42,29 @@ private int size = 0;
         return null;
         
     }
+    /////////////////////////////////////optimizado
+  public Pelicula buscarPelicula(String titulo) {
+        
+        int izq = 0;
+        int der = (pelis.size()-1);
+        int medio= (izq+der)/2;
+        
+        while (izq < der && !pelis.get(medio).getPelicula().equals(titulo) ) {
+            if(titulo.compareTo(pelis.get(medio).getPelicula()) < 0) {
+                der = medio - 1;
+            }else {
+                izq = medio + 1;
+            }
+            medio = (izq + der) / 2;
+        }
+
+        if(pelis.get(medio).getPelicula().equals(titulo)) {
+            return pelis.get(medio);
+        }else {
+            return null;
+        }  
+        
+    }
 
     public int getSize(){
         return this.size;
@@ -51,6 +74,18 @@ private int size = 0;
         return pelis.get(index);
 
     }
+    
+    
+    /**
+    * Elimina de la lista la película pasada como parámetro.
+    * @param pel: película a eliminar
+    * @return true si se ha eliminado, false en caso contrario
+    */
+    public boolean eliminarPelicula(Pelicula pel) {
+    	
+    	return false;
+    }
+
 
 
 }

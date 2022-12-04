@@ -65,14 +65,7 @@ public class Interprete implements Comparable<Interprete>{
 	}
 
 
-/*
- *  ///////se necesita un get interprete con el nombre, no esta bien hecho
-    public Interprete getInterprete(sNombre,sPelis){
-        Interprete inter;
-        inter = inter.getNombre(sNombre);
-        return inter;
-    }
- */
+
 
    
     

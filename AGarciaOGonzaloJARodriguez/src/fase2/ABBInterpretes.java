@@ -59,28 +59,30 @@ public Interprete buscarInterprete(String nombre){
 */
 
 //////yo lo he hecho con un Interprete, hay que cambiar eso
-
-/*public Interprete eliminarInterprete(String nombre){
+public Interprete eliminarInterprete(String nombre){
     Interprete inter;
     inter.getNombre();
     if(!this.isEmpty()) {
         this.root = this.root.eliminarInterprete(inter);
     }
-}*/
+}
 
-
+//indica si el nodo es hoja
+	public boolean isLeaf() {
+		return (left == null && right == null);
+	}
 /**
 * Devuelve el nº de elementos del árbol.
 * @return nº de elementos del árbol
 */
 public int size(){
-    if (this.isEmpty())return 0;
-    else return this.root.size();
-}
-@Override
-public Interprete eliminarInterprete(String nombre) {
-    // TODO Auto-generated method stub
-    return null;
+	if(this.isLeaf()) return 1;
+	else{
+		int cont = 0;
+		if(this.hasLeft()) cont += this.left.size();
+		if(this.hasRight()) cont += this.right.size();
+		return cont;
+	}
 }
 
 
