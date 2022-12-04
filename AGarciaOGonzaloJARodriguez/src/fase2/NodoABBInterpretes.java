@@ -89,7 +89,12 @@ public class NodoABBInterpretes {
 	   
 	 
  /////////////////////////////no se si lo borro del todo (en ese caso estaria mal///////////////////////////////
-
+	 /**
+	* Elimina un intérprete del árbol (puede seguir estando en las listas de
+	* intérpretes de las películas)
+	* @param nombre Nombre del intérprete a eliminar
+	* @return el Interprete (si se ha eliminado), null en caso contrario
+	*/
 	public NodoABBInterpretes eliminarInterprete(String sInterprete) {
 		Interprete elem = buscarInterprete(sInterprete);
 		int comp = elem.compareTo(this.info);
