@@ -82,24 +82,10 @@ private int size = 0;
     * @param pel: película a eliminar
     * @return true si se ha eliminado, false en caso contrario
     */
+
     public boolean eliminarPelicula(Pelicula pel){
-
-        boolean resultado = false;
-        List milista = new ArrayList<Pelicula>();
-        Pelicula[] miarray = new Pelicula[milista.size()];
-        miarray = (Pelicula[]) milista.toArray(miarray);
         
-        for (int i = 0; i < miarray.length; i++) {
-            if (miarray[i] == pel) {
-                for (int j = i; j < miarray.length - 1; j++) {
-                    miarray[j] = miarray[j+1];
-                }
-                miarray[miarray.length - 1].equals(null) ;
-                resultado = true;
-            }
-        }
-        return resultado;
-
+        return pelis.remove(pel);
     }
 
 }
