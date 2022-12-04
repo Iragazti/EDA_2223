@@ -83,6 +83,7 @@ private int size = 0;
     * @return true si se ha eliminado, false en caso contrario
     */
     public boolean eliminarPelicula(Pelicula pel){
+
         boolean resultado = false;
         List milista = new ArrayList<Pelicula>();
         Pelicula[] miarray = new Pelicula[milista.size()];
@@ -98,10 +99,6 @@ private int size = 0;
             }
         }
         return resultado;
-        
-
-
-       
 
     }
 
