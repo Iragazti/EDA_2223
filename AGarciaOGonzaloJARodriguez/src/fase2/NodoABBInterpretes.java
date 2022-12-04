@@ -117,7 +117,10 @@ public class NodoABBInterpretes {
 		}
 
 	}
-
+	/**
+	 * Este metodo busca el apuntador al nodo con menor valor.
+	 * @return una estructura que contiene el nodo buscado y su info.
+	 */
 	public ResultadoRemoveMin removeMin() {
 		ResultadoRemoveMin resul = new ResultadoRemoveMin();
 		if (!this.hasLeft()) {// El mÃ­nimo es el actual
@@ -132,7 +135,9 @@ public class NodoABBInterpretes {
 		return resul;
 	}
 
-
+	/**
+	 * Imprime el arbon el inorden
+	 */
 	public void inorden() {
 		if (this.hasLeft())
 			this.left.inorden();
