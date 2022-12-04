@@ -31,18 +31,7 @@ private int size = 0;
      * @return la Pelï¿½cula (si estï¿½ en la lista), null en caso contrario
      * 
      */
-   /* public Pelicula buscarPelicula2(String titulo) {
-        
-        for( int i=0; i<pelis.size() ; i++) {
-           
-            if(pelis.get(i).getTitulo().equals(titulo)) {
-                return pelis.get(i);
-            }
-            
-        }
-        return null;
-        
-    }*/
+   
     /////////////////////////////////////optimizado
   public Pelicula buscarPelicula(String titulo) {
         
