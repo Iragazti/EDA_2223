@@ -63,14 +63,13 @@ public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpr
 
     }
 
-
-/**
-* Devuelve el nÂº de elementos del Ã¡rbol.
-* @return nÂº de elementos del Ã¡rbol
-*/
-public int size(){
-	return this.size();
-}
+    /**
+    * Devuelve el nÂº de elementos del Ã¡rbol.
+    * @return nÂº de elementos del Ã¡rbol
+    */
+    public int size(){
+        return this.size();
+    }
 
     
 }

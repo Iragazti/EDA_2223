@@ -74,18 +74,15 @@ private int size = 0;
         return pelis.get(index);
 
     }
-    
-    
-    /**
+
+
+        /**
     * Elimina de la lista la película pasada como parámetro.
     * @param pel: película a eliminar
     * @return true si se ha eliminado, false en caso contrario
     */
-    public boolean eliminarPelicula(Pelicula pel) {
-    	
-    	return false;
+    public boolean eliminarPelicula(Pelicula pel){
+        return false;
     }
-
-
 
 }
