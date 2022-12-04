@@ -74,7 +74,7 @@ private int size = 0;
 
     public boolean eliminarPelicula(Pelicula pel){
         
-        return pelis.remove(pel);
+        return this.pelis.remove(pel);
     }
 
 }
