@@ -51,6 +51,14 @@ private int size = 0;
         return pelis.get(index);
 
     }
+   
+
+    public boolean eliminarPelicula(Pelicula pel){
+        buscarPelicula
+            return true;
+        else 
+            return false;
+    }
 
 
 }

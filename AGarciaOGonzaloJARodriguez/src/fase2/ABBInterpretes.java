@@ -58,15 +58,15 @@ public Interprete buscarInterprete(String nombre){
 * @return el Interprete (si se ha eliminado), null en caso contrario
 */
 
-//////yo lo he hecho con un Interprete, hay que cambiar eso
 
-/*public Interprete eliminarInterprete(String nombre){
+
+public Interprete eliminarInterprete(String nombre){
     Interprete inter;
     inter.getNombre();
     if(!this.isEmpty()) {
         this.root = this.root.eliminarInterprete(inter);
     }
-}*/
+}
 
 
 /**
