@@ -80,14 +80,15 @@ public class NodoABBInterpretes {
 
 	
 	public Interprete getMin() {
-		if(!this.hasLeft()) { //El mínimo es el nodo actual
+		if(!this.hasLeft()) { //El mÃ­nimo es el nodo actual
 		return this.info;
-		}else {//El mínimo está en el subárbol izquierdo
+		}else {//El mÃ­nimo estÃ¡ en el subÃ¡rbol izquierdo
 		return this.left.getMin();
+		}
 	}
 	   
 	 
-
+ /////////////////////////////no se si lo borro del todo (en ese caso estaria mal///////////////////////////////
 
 	public NodoABBInterpretes eliminarInterprete(String sInterprete) {
 		Interprete elem = buscarInterprete(sInterprete);
@@ -95,18 +96,18 @@ public class NodoABBInterpretes {
  		if(comp==0) {//Caso (a): this es el nodo a eliminar
  			if(!this.hasLeft()) return this.right; //Caso (a1)
  			else if(!this.hasRight()) return this.left; //Caso (a2)
- 			else {//Caso (a3): Tiene los dos subarboles, sustituir por el valor mínimo del subarbol derecho
+ 			else {//Caso (a3): Tiene los dos subarboles, sustituir por el valor mÃ­nimo del subarbol derecho
  				ResultadoRemoveMin<Interprete> min = this.right.removeMin();
 				this.right = min.nodo;
 				this.info = min.valor;
 				return this;
 			}
-		} else if(comp<0){//Caso (b) El elemento a eliminar, si está, estará en el subárbol izq
-			if(this.hasLeft()) this.left = this.left.eliminarInterprete(elem);
+		} else if(comp<0){//Caso (b) El elemento a eliminar, si estÃ¡, estarÃ¡ en el subÃ¡rbol izq
+			if(this.hasLeft()) this.left = this.left.eliminarInterprete(sInterprete);
 			return this;
 			
-		}else {//comp>0: Caso (c) El elemento a eliminar, si está, estará en el subárbol dcho
-			if (this.hasRight()) this.right = this.right.eliminarInterprete(elem);
+		}else {//comp>0: Caso (c) El elemento a eliminar, si estÃ¡, estarÃ¡ en el subÃ¡rbol dcho
+			if (this.hasRight()) this.right = this.right.eliminarInterprete(sInterprete);
 			return this;
 		}
 
@@ -114,10 +115,10 @@ public class NodoABBInterpretes {
 
 	public ResultadoRemoveMin removeMin() {
 		ResultadoRemoveMin resul = new ResultadoRemoveMin();
-		if (!this.hasLeft()) {// El mínimo es el actual
+		if (!this.hasLeft()) {// El mÃ­nimo es el actual
 			resul.valor = this.info;
 			resul.nodo = this.right;
-		} else { // El mínimo está en el subárbol izquierdo
+		} else { // El mÃ­nimo estÃ¡ en el subÃ¡rbol izquierdo
 			ResultadoRemoveMin resulLeft = this.left.removeMin();
 			this.left = resulLeft.nodo;
 			resul.valor = resulLeft.valor;
@@ -135,7 +136,20 @@ public class NodoABBInterpretes {
 			this.right.inorden();
 	}
 	
-	
+	//indica si el nodo es hoja
+	public boolean isLeaf() {
+		return (left == null && right == null);
+	}
+
+	public int size(){
+		if(this.isLeaf()) return 1;
+		else{
+			int cont = 0;
+			if(this.hasLeft()) cont += this.left.size();
+			if(this.hasRight()) cont += this.right.size();
+			return cont;
+		}
+	}
 
 
 }
