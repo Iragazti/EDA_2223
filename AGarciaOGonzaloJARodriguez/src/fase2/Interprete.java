@@ -1,6 +1,6 @@
 package fase2;
 
-public class Interprete {
+public class Interprete implements Comparable<Interprete>{
     
     private String nombre;
     private double rating;
@@ -58,5 +58,22 @@ public class Interprete {
     public double getRating(){
         return this.rating;
     }
+
+    public int compareTo(Interprete i) {
+		
+		return nombre.compareTo(i.nombre );		
+	}
+
+
+/*
+ *  ///////se necesita un get interprete con el nombre, no esta bien hecho
+    public Interprete getInterprete(sNombre,sPelis){
+        Interprete inter;
+        inter = inter.getNombre(sNombre);
+        return inter;
+    }
+ */
+
+   
     
 }
