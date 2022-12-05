@@ -16,14 +16,15 @@ public class AplicacionIMDB {
 	}
 
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws FileNotFoundException{
 		CatalogoIMDB catalogo = new CatalogoIMDB();
-        try {
-			catalogo.cargarPeliculas("C:\\Users\\Agus\\Desktop\\ficheros\\films_tiny.txt");
-			catalogo.cargarInterpretes("C:\\Users\\Agus\\Desktop\\ficheros\\cast_tiny.txt");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+        System.out.println("¡Bienvenid@ a la aplicación de IMDB!");
+		System.out.println("Cargando peliculas...");
+		catalogo.cargarPeliculas("C:\\Users\\Agus\\Desktop\\ficheros\\films_tiny.txt");
+		System.out.println("En el catálogo hay"+ catalogo.getPeliculas().getSize() +" películas.");
+		System.out.println("Cargando interpretes...");
+		catalogo.cargarInterpretes("C:\\Users\\Agus\\Desktop\\ficheros\\cast_tiny.txt");
+		System.out.println("En el catálogo hay"+ catalogo.getInterpretes().size() +" interpretes.");
 	
 		//Men�
 		Scanner sc = new Scanner(System.in);
