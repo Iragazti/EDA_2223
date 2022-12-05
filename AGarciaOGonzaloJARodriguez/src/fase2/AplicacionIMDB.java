@@ -6,7 +6,8 @@ public class AplicacionIMDB {
 	
 	private static AplicacionIMDB appIMDB = null;
 	private Scanner sc = null;
-	
+	private static String strPeli;
+	private static String strInter;
 	
 	public static AplicacionIMDB getInstance(){
 		if (appIMDB == null) {
@@ -25,7 +26,7 @@ public class AplicacionIMDB {
 		System.out.println("Cargando interpretes...");
 		catalogo.cargarInterpretes("C:\\Users\\Agus\\Desktop\\ficheros\\cast_tiny.txt");
 		System.out.println("En el catálogo hay"+ catalogo.getInterpretes().size() +" interpretes.");
-	
+		strPeli = strInter = null;
 		//Men�
 		Scanner sc = new Scanner(System.in);
 		int opcion=-1;
@@ -35,6 +36,7 @@ public class AplicacionIMDB {
 			System.out.println("1. Mostrar informaci�n de pel�cula");
 			System.out.println("2. Mostrar informaci�n de int�rprete");
 			System.out.println("3. A�adir voto a pel�cula");
+			System.out.println("4. Eliminar película");
 
 			System.out.println("0. Salir");
 			sc = new Scanner(System.in);
@@ -43,23 +45,28 @@ public class AplicacionIMDB {
 				
 			   case 1: 
 			   		System.out.println("Introduzca el nombre de una película:");
-			   		String strPeli = sc.nextLine();
+			   		strPeli = sc.nextLine();
 			   		catalogo.imprimirInfoPelicula(strPeli);
 			        break;
 
 				case 2:
 					System.out.println("Introduzca el nombre de un intérprete:");
-					String strInter = sc.nextLine();
+					strInter = sc.nextLine();
 					catalogo.imprimirInfoInterprete(strInter);
 					break;
 				
 				case 3:
 					System.out.println("Introduzca el nombre de una película:");
-					String stPeli = sc.nextLine();
+					strPeli = sc.nextLine();
 					System.out.println("Introducir puntuación entre 0.0 y 10.0:");
 					float puntuacion = sc.nextFloat();
-					catalogo.anadirVoto(stPeli, puntuacion);
+					catalogo.anadirVoto(strPeli, puntuacion);
 					break;
+
+				case 4:
+					System.out.println("Introduzca el título una película:");
+					strPeli = sc.nextLine();
+					catalogo.eliminarPelicula(strInter);
 				case 0:
 					break;
 				default:

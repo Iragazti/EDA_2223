@@ -3,7 +3,7 @@ package fase2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaInterpretes {
+public class ListaInterpretes implements InterfazInterpretes{
 
     private List<Interprete> listaInterpretes;
     private int size = 0;
@@ -38,10 +38,17 @@ public class ListaInterpretes {
         }
         return null;
     }
-    public int getSize(){
+    public int size(){
         return this.size;
     }
     public Interprete getInterprete(int index){
         return this.listaInterpretes.get(index);
+    }
+    public Interprete eliminarInterprete(String inter){
+        Interprete interprete = buscarInterprete(inter);
+        if (interprete != null) {
+            this.listaInterpretes.remove(interprete);
+        }
+        return interprete;
     }
 }
