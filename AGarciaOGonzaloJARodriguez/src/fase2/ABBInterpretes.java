@@ -7,6 +7,7 @@ public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpr
 
     NodoABBInterpretes root;
     int size;
+
     public ABBInterpretes (Interprete inter){
         this.root = new NodoABBInterpretes(inter);
         this.size = 0;
@@ -35,7 +36,7 @@ public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpr
     public void anadirInterprete(Interprete inter){
         this.size += 1;
         if (this.isEmpty()) {
-            new ABBInterpretes<>(inter);
+            this.root = new NodoABBInterpretes(inter);
         }
         else{
             this.root.anadirInterprete(inter);
@@ -79,6 +80,6 @@ public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpr
     * @return nÂº de elementos del Ã¡rbol
     */
     public int size(){
-        return this.size();
+        return this.size;
     }
 }

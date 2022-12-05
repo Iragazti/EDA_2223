@@ -95,7 +95,7 @@ public class NodoABBInterpretes {
 	* @param nombre Nombre del intérprete a eliminar
 	* @return el Interprete (si se ha eliminado), null en caso contrario
 	*/
-	//TODO duda: 
+	
 	public NodoABBInterpretes eliminarInterprete(String sInterprete) {
 		Interprete elem = buscarInterprete(sInterprete);
 		int comp = elem.compareTo(this.info);

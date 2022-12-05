@@ -15,7 +15,7 @@ public class CatalogoIMDB {
     public CatalogoIMDB(){
         super();
         this.listaPeliculas = new ListaPeliculas();
-        this.listaInterpretes = new ListaInterpretes();
+        this.listaInterpretes = new ABBInterpretes<>();
     }
 
     public static CatalogoIMDB getInstance() {
@@ -103,18 +103,18 @@ public class CatalogoIMDB {
                 peliculaActual = this.listaPeliculas.buscarPelicula(datosPelis[i]);
                 pelisDeInterprete.anadirPelicula(peliculaActual);
             }
+            peliculaActual = null;
 
             interpreteActual = new Interprete(datos[0], pelisDeInterprete);
             interpreteActual.calcularRating();
             
-            // if (arbolInterpretes.isEmpty()) {
-            //     arbolInterpretes = new ABBInterpretes<>(interpreteActual);
-            // }
-            // else{
-            //     arbolInterpretes.anadirInterprete(interpreteActual);
-            // }
-
-            this.listaInterpretes.anadirInterprete(interpreteActual);
+            //Cargar el intérprete actual en el arbol
+            if (!arbolInterpretes.isEmpty()) {
+                arbolInterpretes.anadirInterprete(interpreteActual);
+            }
+            else{
+                arbolInterpretes = new ABBInterpretes<>(interpreteActual);
+            }
 
             // Esta parte carga el intérprete actual en la lista de intérpretes de cada una
             // de sus películas.
@@ -125,7 +125,7 @@ public class CatalogoIMDB {
 
         }
         entrada.close();
-
+        setInterpretes(arbolInterpretes);
     }
 
     /**
