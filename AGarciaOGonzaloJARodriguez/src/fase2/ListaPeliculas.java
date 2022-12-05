@@ -56,7 +56,7 @@ private int size = 0;
         
     }
 
-    public int getSize(){
+    public int size(){
         return this.size;
     }
         
@@ -73,7 +73,7 @@ private int size = 0;
     */
 
     public boolean eliminarPelicula(Pelicula pel){
-        
+        size -= 1;
         return this.pelis.remove(pel);
     }
 

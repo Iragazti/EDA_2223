@@ -19,7 +19,7 @@ public class Interprete implements Comparable<Interprete>{
     public void calcularRating() {// Ver ayuda en siguiente apartado
         double sumRating = 0;
         double sumVotos = 0;
-        for (int i = 0; i < peliculasHechas.getSize(); i++) { //O(N)
+        for (int i = 0; i < peliculasHechas.size(); i++) { //O(N)
             if (peliculasHechas.getPelicula(i).getVotos() > 0) {
                 
                 sumRating += peliculasHechas.getPelicula(i).getRating() * peliculasHechas.getPelicula(i).getVotos();

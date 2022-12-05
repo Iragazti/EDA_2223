@@ -48,6 +48,7 @@ public class ListaInterpretes implements InterfazInterpretes{
         Interprete interprete = buscarInterprete(inter);
         if (interprete != null) {
             this.listaInterpretes.remove(interprete);
+            size -= 1;
         }
         return interprete;
     }

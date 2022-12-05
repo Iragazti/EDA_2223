@@ -109,7 +109,7 @@ public class CatalogoIMDB {
 
             // Esta parte carga el intérprete actual en la lista de intérpretes de cada una
             // de sus películas.
-            for (int i = 0; i < pelisDeInterprete.getSize(); i++) { // O(M) M = pelisDeInterprete.length;
+            for (int i = 0; i < pelisDeInterprete.size(); i++) { // O(M) M = pelisDeInterprete.length;
                 peliculaActual = pelisDeInterprete.getPelicula(i);
                 peliculaActual.anadirInterprete(interpreteActual);
             }
@@ -154,8 +154,8 @@ public class CatalogoIMDB {
             double rating = interprete.getRating();
             ListaPeliculas peliculasHechas = interprete.getPeliculasHechas();
             System.out.println(String.format("Nombre: %s\nRating: %f\nTotal de películas del intérprete: %d", nombre,
-                    rating, peliculasHechas.getSize()));
-            for (int i = 0; i < peliculasHechas.getSize(); i++) {
+                    rating, peliculasHechas.size()));
+            for (int i = 0; i < peliculasHechas.size(); i++) {
                 System.out.println(peliculasHechas.getPelicula(i).getTitulo());
             }
         }
