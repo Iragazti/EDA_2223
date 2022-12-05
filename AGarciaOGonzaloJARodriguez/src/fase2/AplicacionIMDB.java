@@ -67,7 +67,8 @@ public class AplicacionIMDB {
 					System.out.println("Introduzca el título una película:");
 					strPeli = sc.nextLine();
 					if(catalogo.eliminarPelicula(strPeli) != null){
-						System.out.println(String.format("Se ha eliminado la pelicula %s. En el catálogo quedan %d películas y %d intérpretes.", strPeli, catalogo.getPeliculas().size(), catalogo.getInterpretes().size()));
+						System.out.println(String.format("Se ha eliminado la pelicula %s. En el catálogo quedan %d películas y %d intérpretes.",
+						strPeli, catalogo.getPeliculas().size(), catalogo.getInterpretes().size()));
 					}
 					else{
 						System.out.println("La película no se ha encontrado en el catálogo");

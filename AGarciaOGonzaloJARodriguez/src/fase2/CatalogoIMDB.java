@@ -175,9 +175,8 @@ public class CatalogoIMDB {
      * 
      * @param intérpretes: conjunto de intérpretes
      */
-    //TODO apartado C
     public void setInterpretes(InterfazInterpretes interpretes) {
-        interpretes.anadirInterprete(null);
+        this.listaInterpretes = interpretes;
     }
 
     /**
