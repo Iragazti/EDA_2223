@@ -1,7 +1,8 @@
 package fase2;
 
 public interface InterfazInterpretes {
-    ////////////////////////faltan metodos de la fase1
+    //TODO ?
+	////////////////////////faltan metodos de la fase1
 	
 	
 	public void anadirInterprete(Interprete inter);
