@@ -32,11 +32,14 @@ public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpr
     * Añade un intérprete a la lista
     * @param inter Intérprete a añadir
     */
-    //TODO duda: Por qué se hace llama a this.anadirInterpete en vez de root.anadirInterprete
     public void anadirInterprete(Interprete inter){
         this.size += 1;
-        this.anadirInterprete(inter);
-        
+        if (this.isEmpty()) {
+            new ABBInterpretes<>(inter);
+        }
+        else{
+            this.root.anadirInterprete(inter);
+        }
     }
 
    
@@ -65,9 +68,10 @@ public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpr
     */
 
     public Interprete eliminarInterprete(String nombre){
-        size -=1;
-        return this.eliminarInterprete(nombre);
-
+        if (this.isEmpty()) {
+            return null;
+        }
+        return this.root.eliminarInterprete(nombre).getElem();
     }
 
     /**
@@ -77,6 +81,4 @@ public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpr
     public int size(){
         return this.size();
     }
-
-    
 }

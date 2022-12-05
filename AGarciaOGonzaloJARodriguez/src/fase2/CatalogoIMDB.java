@@ -91,13 +91,14 @@ public class CatalogoIMDB {
         Pelicula peliculaActual = null;
         ListaPeliculas pelisDeInterprete = null;
         Interprete interpreteActual = null;
-
+        ABBInterpretes<Interprete> arbolInterpretes = new ABBInterpretes<>();
+        
         while (entrada.hasNext()) {
             linea = entrada.nextLine();
             datos = linea.split("->"); // Separa el nombre del intérprete de sus películas
             datosPelis = datos[1].split("\\|\\|"); // Separa todas las películas del artista y las añade a una array
             pelisDeInterprete = new ListaPeliculas();
-
+            //Crea un array con todas las películas del interprete actual
             for (int i = 0; i < datosPelis.length; i++) {// O(N) N = datosPelis.length
                 peliculaActual = this.listaPeliculas.buscarPelicula(datosPelis[i]);
                 pelisDeInterprete.anadirPelicula(peliculaActual);
@@ -105,6 +106,14 @@ public class CatalogoIMDB {
 
             interpreteActual = new Interprete(datos[0], pelisDeInterprete);
             interpreteActual.calcularRating();
+            
+            // if (arbolInterpretes.isEmpty()) {
+            //     arbolInterpretes = new ABBInterpretes<>(interpreteActual);
+            // }
+            // else{
+            //     arbolInterpretes.anadirInterprete(interpreteActual);
+            // }
+
             this.listaInterpretes.anadirInterprete(interpreteActual);
 
             // Esta parte carga el intérprete actual en la lista de intérpretes de cada una
