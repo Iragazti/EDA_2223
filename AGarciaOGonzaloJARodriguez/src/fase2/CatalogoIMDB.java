@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class CatalogoIMDB {
 
     private static CatalogoIMDB miCatalogo;
-    //TODO cambiar a interfaz
+    //TODO cambiar a interfaz. Apartado B
     private ListaPeliculas listaPeliculas;
     private InterfazInterpretes listaInterpretes;
 
@@ -175,6 +175,7 @@ public class CatalogoIMDB {
      * 
      * @param intérpretes: conjunto de intérpretes
      */
+    //TODO apartado C
     public void setInterpretes(InterfazInterpretes interpretes) {
         interpretes.anadirInterprete(null);
     }
@@ -187,8 +188,19 @@ public class CatalogoIMDB {
      * catálogo, y al resto se les actualiza el rating.
      */
 
-    public Pelicula eliminarPelicula(String titulo) {
-        return null;
+    public Pelicula eliminarPelicula(String titulo) { //O(n^2 + LogN)
+        Pelicula pelicula = this.listaPeliculas.buscarPelicula(titulo); //O(logN)
+        if (pelicula != null) {
+            for (int i = 0; i < pelicula.getInterpretes().size(); i++) { //O(n)
+                Interprete interActual = pelicula.getInterpretes().getInterprete(i);
+                interActual.getPeliculasHechas().eliminarPelicula(pelicula);
+                if (interActual.getPeliculasHechas().size() == 0) {
+                    this.listaInterpretes.eliminarInterprete(interActual.getNombre()); //O(n)
+                }
+                interActual.calcularRating();
+            }
+            this.listaPeliculas.eliminarPelicula(pelicula);
+        }
+        return pelicula;
     }
-
 }

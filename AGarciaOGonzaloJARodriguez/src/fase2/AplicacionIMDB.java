@@ -2,8 +2,6 @@ package fase2;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
-
 public class AplicacionIMDB {
 	
 	private static AplicacionIMDB appIMDB = null;
@@ -24,10 +22,10 @@ public class AplicacionIMDB {
         System.out.println("¡Bienvenid@ a la aplicación de IMDB!");
 		System.out.println("Cargando peliculas...");
 		catalogo.cargarPeliculas("C:\\Users\\Agus\\Desktop\\ficheros\\films_tiny.txt");
-		System.out.println("En el catálogo hay"+ catalogo.getPeliculas().size() +" películas.");
+		System.out.println("En el catálogo hay "+ catalogo.getPeliculas().size() +" películas.");
 		System.out.println("Cargando interpretes...");
 		catalogo.cargarInterpretes("C:\\Users\\Agus\\Desktop\\ficheros\\cast_tiny.txt");
-		System.out.println("En el catálogo hay"+ catalogo.getInterpretes().size() +" interpretes.");
+		System.out.println("En el catálogo hay "+ catalogo.getInterpretes().size() +" interpretes.");
 		strPeli = strInter = null;
 		//Men�
 		Scanner sc = new Scanner(System.in);
@@ -68,7 +66,7 @@ public class AplicacionIMDB {
 				case 4:
 					System.out.println("Introduzca el título una película:");
 					strPeli = sc.nextLine();
-					if(catalogo.eliminarPelicula(strInter) != null){
+					if(catalogo.eliminarPelicula(strPeli) != null){
 						System.out.println(String.format("Se ha eliminado la pelicula %s. En el catálogo quedan %d películas y %d intérpretes.", strPeli, catalogo.getPeliculas().size(), catalogo.getInterpretes().size()));
 					}
 					else{

@@ -6,15 +6,19 @@ package fase2;
 public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpretes {
 
     NodoABBInterpretes root;
-
+    int size;
     public ABBInterpretes (Interprete inter){
         this.root = new NodoABBInterpretes(inter);
+        this.size = 0;
     }
+    
     public ABBInterpretes(NodoABBInterpretes inter) {
 		this.root = inter;
+        this.size = 0;
 	}
 	public ABBInterpretes() {
 		this.root = null;
+        this.size = 0;
 	}
 
 
@@ -28,8 +32,11 @@ public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpr
     * Añade un intérprete a la lista
     * @param inter Intérprete a añadir
     */
+    //TODO duda: Por qué se hace llama a this.anadirInterpete en vez de root.anadirInterprete
     public void anadirInterprete(Interprete inter){
+        this.size += 1;
         this.anadirInterprete(inter);
+        
     }
 
    
@@ -58,7 +65,7 @@ public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpr
     */
 
     public Interprete eliminarInterprete(String nombre){
-
+        size -=1;
         return this.eliminarInterprete(nombre);
 
     }
