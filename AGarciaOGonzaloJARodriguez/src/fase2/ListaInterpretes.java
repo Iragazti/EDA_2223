@@ -6,11 +6,12 @@ import java.util.List;
 public class ListaInterpretes implements InterfazInterpretes{
 
     private List<Interprete> listaInterpretes;
-    private int size = 0;
+    private int size;
         
         public ListaInterpretes()
         {
              listaInterpretes = new ArrayList<Interprete>();
+             size = 0;
         }
 
     /**

@@ -6,11 +6,12 @@ import java.util.List;
 public class ListaPeliculas {
 
 private List<Pelicula> pelis;
-private int size = 0;
+private int size;
     
     public ListaPeliculas()
     {
          pelis = new ArrayList<Pelicula>();
+         size = 0;
     }
     
 

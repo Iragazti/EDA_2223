@@ -7,7 +7,7 @@ public class AplicacionIMDB {
 	private static AplicacionIMDB appIMDB = null;
 	private Scanner sc = null;
 	private static String strPeli, strInter;
-	
+	private static CatalogoIMDB catalogo;
 	public static AplicacionIMDB getInstance(){
 		if (appIMDB == null) {
 			appIMDB = new AplicacionIMDB();
@@ -17,7 +17,7 @@ public class AplicacionIMDB {
 
 
 	public static void main(String[] args) throws FileNotFoundException{
-		CatalogoIMDB catalogo = new CatalogoIMDB();
+		catalogo = new CatalogoIMDB();
         System.out.println("¡Bienvenid@ a la aplicación de IMDB!");
 		System.out.println("Cargando peliculas...");
 		catalogo.cargarPeliculas("C:\\Users\\Agus\\Desktop\\ficheros\\films_medium.txt");

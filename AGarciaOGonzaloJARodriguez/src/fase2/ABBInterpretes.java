@@ -6,7 +6,7 @@ package fase2;
 public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpretes {
 
     NodoABBInterpretes root;
-    int size;
+    private int size;
 
     public ABBInterpretes (Interprete inter){
         this.root = new NodoABBInterpretes(inter);
@@ -72,7 +72,13 @@ public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpr
         if (this.isEmpty()) {
             return null;
         }
-        return this.root.eliminarInterprete(nombre).getElem();
+        NodoABBInterpretes elem = this.root.eliminarInterprete(nombre);
+        if (elem != null) {
+            this.size -= 1;
+            return elem.getElem();
+        }
+        return null;
+        
     }
 
     /**

@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class CatalogoIMDB {
 
     private static CatalogoIMDB miCatalogo;
-    //TODO cambiar a interfaz. Apartado B
     private ListaPeliculas listaPeliculas;
     private InterfazInterpretes listaInterpretes;
 
