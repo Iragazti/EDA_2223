@@ -96,25 +96,26 @@ public class NodoABBInterpretes {
 	* @return el Interprete (si se ha eliminado), null en caso contrario
 	*/
 	
-	public NodoABBInterpretes eliminarInterprete(String sInterprete) {
+	public Interprete eliminarInterprete(String sInterprete) {
 		Interprete elem = buscarInterprete(sInterprete);
 		int comp = elem.compareTo(this.info);
  		if(comp==0) {//Caso (a): this es el nodo a eliminar
- 			if(!this.hasLeft()) return this.right; //Caso (a1)
- 			else if(!this.hasRight()) return this.left; //Caso (a2)
+ 			if (!this.hasLeft() && !this.hasRight()) return null; //caso (a0). no tiene ningún subarbol
+			else if(!this.hasLeft()) return this.right.info; //Caso (a1)
+ 			else if(!this.hasRight()) return this.left.info; //Caso (a2)
  			else {//Caso (a3): Tiene los dos subarboles, sustituir por el valor mÃ­nimo del subarbol derecho
  				ResultadoRemoveMin<Interprete> min = this.right.removeMin();
 				this.right = min.nodo;
 				this.info = min.valor;
-				return this;
+				return this.info;
 			}
 		} else if(comp<0){//Caso (b) El elemento a eliminar, si estÃ¡, estarÃ¡ en el subÃ¡rbol izq
-			if(this.hasLeft()) this.left = this.left.eliminarInterprete(sInterprete);
-			return this;
+			if(this.hasLeft()) this.left.info =  this.left.eliminarInterprete(sInterprete);
+			return this.info;
 			
 		}else {//comp>0: Caso (c) El elemento a eliminar, si estÃ¡, estarÃ¡ en el subÃ¡rbol dcho
-			if (this.hasRight()) this.right = this.right.eliminarInterprete(sInterprete);
-			return this;
+			if (this.hasRight()) this.right.info = this.right.eliminarInterprete(sInterprete);
+			return this.info;
 		}
 
 	}

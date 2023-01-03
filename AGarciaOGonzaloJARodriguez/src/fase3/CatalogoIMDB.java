@@ -2,7 +2,6 @@ package fase3;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.security.cert.TrustAnchor;
 import java.util.Scanner;
 
 public class CatalogoIMDB {
@@ -14,7 +13,7 @@ public class CatalogoIMDB {
     public CatalogoIMDB(){
         super();
         this.listaPeliculas = new ListaPeliculas();
-        this.listaInterpretes = new ABBInterpretes<>();
+        this.listaInterpretes = new ABBInterpretes();
     }
 
     public static CatalogoIMDB getInstance() {
@@ -90,7 +89,7 @@ public class CatalogoIMDB {
         Pelicula peliculaActual = null;
         ListaPeliculas pelisDeInterprete = null;
         Interprete interpreteActual = null;
-        ABBInterpretes<Interprete> arbolInterpretes = new ABBInterpretes<>();
+        
         
         while (entrada.hasNext()) {
             linea = entrada.nextLine();
@@ -108,11 +107,11 @@ public class CatalogoIMDB {
             interpreteActual.calcularRating();
             
             //Cargar el intérprete actual en el arbol
-            if (!arbolInterpretes.isEmpty()) {
-                arbolInterpretes.anadirInterprete(interpreteActual);
+            if (!listaInterpretes.isEmpty()) {
+                listaInterpretes.anadirInterprete(interpreteActual);
             }
             else{
-                arbolInterpretes = new ABBInterpretes<>(interpreteActual);
+                listaInterpretes = new ABBInterpretes(interpreteActual);
             }
 
             // Esta parte carga el intérprete actual en la lista de intérpretes de cada una
@@ -124,7 +123,7 @@ public class CatalogoIMDB {
 
         }
         entrada.close();
-        setInterpretes(arbolInterpretes);
+        setInterpretes(listaInterpretes);
     }
 
     /**

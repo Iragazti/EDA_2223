@@ -3,6 +3,8 @@ package fase3;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 public class ListaInterpretes implements InterfazInterpretes{
 
     private List<Interprete> listaInterpretes;
@@ -39,6 +41,9 @@ public class ListaInterpretes implements InterfazInterpretes{
         }
         return null;
     }
+    public boolean isEmpty(){
+        return this.size == 0;
+    }
     public int size(){
         return this.size;
     }
@@ -53,4 +58,5 @@ public class ListaInterpretes implements InterfazInterpretes{
         }
         return interprete;
     }
+    
 }
