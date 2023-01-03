@@ -14,7 +14,7 @@ public class CatalogoIMDB {
     public CatalogoIMDB(){
         super();
         this.listaPeliculas = new ListaPeliculas();
-        this.listaInterpretes = new ABBInterpretes<>();
+        this.listaInterpretes = new ABBInterpretes();
     }
 
     public static CatalogoIMDB getInstance() {
@@ -90,7 +90,7 @@ public class CatalogoIMDB {
         Pelicula peliculaActual = null;
         ListaPeliculas pelisDeInterprete = null;
         Interprete interpreteActual = null;
-        ABBInterpretes<Interprete> arbolInterpretes = new ABBInterpretes<>();
+        ABBInterpretes arbolInterpretes = new ABBInterpretes();
         
         while (entrada.hasNext()) {
             linea = entrada.nextLine();
@@ -112,7 +112,7 @@ public class CatalogoIMDB {
                 arbolInterpretes.anadirInterprete(interpreteActual);
             }
             else{
-                arbolInterpretes = new ABBInterpretes<>(interpreteActual);
+                arbolInterpretes = new ABBInterpretes(interpreteActual);
             }
 
             // Esta parte carga el intérprete actual en la lista de intérpretes de cada una

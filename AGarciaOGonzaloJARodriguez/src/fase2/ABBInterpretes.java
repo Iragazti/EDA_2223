@@ -3,7 +3,7 @@ package fase2;
 
 
 
-public class ABBInterpretes <T extends Comparable<T>> implements InterfazInterpretes {
+public class ABBInterpretes implements InterfazInterpretes {
 
     NodoABBInterpretes root;
     private int size;
