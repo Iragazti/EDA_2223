@@ -72,10 +72,10 @@ public class ABBInterpretes implements InterfazInterpretes {
         if (this.isEmpty()) {
             return null;
         }
-        NodoABBInterpretes elem = this.root.eliminarInterprete(nombre);
+        Interprete elem = this.root.eliminarInterprete(nombre);
         if (elem != null) {
             this.size -= 1;
-            return elem.getElem();
+            return elem;
         }
         return null;
         

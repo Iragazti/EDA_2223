@@ -20,10 +20,10 @@ public class AplicacionIMDB {
 		catalogo = new CatalogoIMDB();
         System.out.println("¡Bienvenid@ a la aplicación de IMDB!");
 		System.out.println("Cargando peliculas...");
-		catalogo.cargarPeliculas("C:\\Users\\Agus\\Desktop\\ficheros\\films_medium.txt");
+		catalogo.cargarPeliculas("C:\\Users\\agust\\Desktop\\smallerfiles\\films_medium.txt");
 		System.out.println("En el catálogo hay "+ catalogo.getPeliculas().size() +" películas.");
 		System.out.println("Cargando interpretes...");
-		catalogo.cargarInterpretes("C:\\Users\\Agus\\Desktop\\ficheros\\cast_medium.txt");
+		catalogo.cargarInterpretes("C:\\Users\\agust\\Desktop\\smallerfiles\\cast_medium.txt");
 		System.out.println("En el catálogo hay "+ catalogo.getInterpretes().size() + " interpretes.");
 		//Men�
 		Scanner sc = new Scanner(System.in);

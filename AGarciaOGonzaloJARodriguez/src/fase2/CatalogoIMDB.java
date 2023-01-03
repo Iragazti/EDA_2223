@@ -2,7 +2,6 @@ package fase2;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.security.cert.TrustAnchor;
 import java.util.Scanner;
 
 public class CatalogoIMDB {
