@@ -9,4 +9,5 @@ public interface InterfazInterpretes {
 	public Interprete buscarInterprete (String sNombre);
 	public Interprete eliminarInterprete(String nombre);
     public int size();
+	public boolean isEmpty();
 }
