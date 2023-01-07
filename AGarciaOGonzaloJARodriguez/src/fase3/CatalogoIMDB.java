@@ -254,7 +254,7 @@ public class CatalogoIMDB {
         * @param inter2: nombre del segundo intérprete
         */
         
-         public void imprimirCamino(String inter1, String inter2) {
+         public void imprimirCamino(String inter1, String inter2) {//O(N+M); N: nº de vertices del grafo; M: nº de aristas en el grafo.
             Map<Interprete, Interprete> resultado = new HashMap<Interprete, Interprete>();
             Queue<Interprete> cola = new LinkedList<Interprete>();
             Interprete interprete1 = this.listaInterpretes.buscarInterprete(inter1);
