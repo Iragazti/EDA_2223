@@ -3,8 +3,12 @@ package fase3;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
+
+import javax.management.Descriptor;
+
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 public class CatalogoIMDB {
@@ -108,15 +112,8 @@ public class CatalogoIMDB {
 
             interpreteActual = new Interprete(datos[0], pelisDeInterprete);
             interpreteActual.calcularRating();
+            listaInterpretes.anadirInterprete(interpreteActual);
             
-            //Cargar el intérprete actual en el arbol
-            if (!listaInterpretes.isEmpty()) {
-                listaInterpretes.anadirInterprete(interpreteActual);
-            }
-            else{
-                listaInterpretes = new ABBInterpretes(interpreteActual);
-            }
-
             // Esta parte carga el intérprete actual en la lista de intérpretes de cada una
             // de sus películas.
             for (int i = 0; i < pelisDeInterprete.size(); i++) { // O(M) M = pelisDeInterprete.length;
@@ -229,36 +226,38 @@ public class CatalogoIMDB {
         * @param inter1: nombre del primer intérprete
         * @param inter2: nombre del segundo intérprete
         * @return: distancia mínima entre ambos intérpretes. En caso de que no
-        * estén conectados, devuelve -1.
+        * estén mapaDistancias, devuelve -1.
         */
-        public int distancia(String inter1, String inter2) {
-            HashMap<String,Integer> conectados = new HashMap<String, Integer>();
-            Queue<String> cola = new LinkedList<String>();
-            cola.add(inter1);
-            conectados.put(inter1,0);
-
+        public int distancia(String origen, String destino) {
+            // Crea un mapa para almacenar la distancia de cada nodo al nodo inicial
+            Map<Interprete,Integer> mapaDistancias = new HashMap<Interprete, Integer>();
+            //Cola para almacenar nodos visitados
+            Queue<Interprete> cola = new LinkedList<Interprete>();
+        
+            Interprete interpreteO = this.listaInterpretes.buscarInterprete(origen);
+            Interprete interpreteD = this.listaInterpretes.buscarInterprete(destino);
+            
             boolean encontrado=false;
+            mapaDistancias.put(interpreteO, 0);
+            cola.add(interpreteO);
 
             while(!cola.isEmpty() && !encontrado){
-                String inter = cola.remove();
-                if (inter.getName().equals(inter2.getName())){
-                    encontrado=true;
+                // Toma el primer nodo de la cola
+                Interprete actual = cola.poll();
+                
+                if (actual.compareTo(interpreteD) == 0){// Si es el nodo destino, devuelve la distancia almacenada en el mapa
+                    return mapaDistancias.get(actual);
                 }
-                else{
-                    for (String aux:inter.getEnlaces()) {
-                        if (!conectados.containsKey(inter)){
-                            cola.add(aux);
-                            conectados.put(aux, conectados.get(inter)+1);
-                        }
-
+                for (Interprete vecino:actual.obtenerAdyacentes()) {
+                    if (!mapaDistancias.containsKey(vecino)){ // Si el vecino no ha sido visitado
+                        // Agrega el vecino a la cola y asigna una distancia igual a la del nodo actual + 1
+                        cola.add(vecino);
+                        mapaDistancias.put(vecino, mapaDistancias.get(actual)+1); //TODO solucionar fallo +1
                     }
                 }
             }
-            if(encontrado){
-                return conectados.get(inter2);
-            }
-            else return -1;
-
+            // Si no se ha encontrado el nodo destino, devuelve -1
+            return -1;
         }
         /**
         * Imprime el camino más corto entre dos intérpretes. Si no existe camino,
@@ -267,33 +266,35 @@ public class CatalogoIMDB {
         * @param inter2: nombre del segundo intérprete
         */
         public void imprimirCamino(String inter1, String inter2){
-            LinkedList<String> resultado = new LinkedList<String>();
-            HashMap<String,String> conectados = new HashMap<String,String>();
-            Queue<String> cola = new LinkedList<String>();
+            LinkedList<Interprete> resultado = new LinkedList<Interprete>();
+            HashMap<String,Interprete> mapaDistancias = new HashMap<String,Interprete>();
+            Queue<Interprete> cola = new LinkedList<Interprete>();
+            Interprete interprete1 = this.listaInterpretes.buscarInterprete(inter1);
+            Interprete interprete2 = this.listaInterpretes.buscarInterprete(inter2);
+            
+            cola.add(interprete1);
+            mapaDistancias.put(inter1, null);
 
-            cola.add(inter1);
-            conectados.put(inter1, null);
-
-            boolean encontrado= false;
+            boolean encontrado = false;
 
             while (!cola.isEmpty()&&!encontrado){
-                String inter = cola.remove();
-                if (inter.getName().equals(inter2.getName())){
+                Interprete inter = cola.remove();
+                if (inter.getNombre().equals(interprete2.getNombre())){
                     encontrado=true;
                 } else {
-                    for (String aux:inter.getEnlaces()){
-                        if (!conectados.containsKey(aux)) {
+                    for (Interprete aux : inter.obtenerAdyacentes()){
+                        if (!mapaDistancias.containsKey(aux)) {
                             cola.add(aux);
-                            conectados.put(aux,inter);
+                            mapaDistancias.put(aux.getNombre(),inter);
                         }
                     }
                 }
             }
             if (encontrado){
-                String actual = inter2;
+                Interprete actual = interprete2;
                 while(actual!=null){
-                    resultado.addFirst(actual.getNombre());
-                    actual=conectados.get(actual);
+                    resultado.addFirst(actual);
+                    actual=mapaDistancias.get(actual);
                 }
             }
             if (!resultado.isEmpty()){
