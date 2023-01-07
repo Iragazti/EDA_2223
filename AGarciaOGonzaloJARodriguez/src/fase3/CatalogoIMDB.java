@@ -252,7 +252,7 @@ public class CatalogoIMDB {
                     if (!mapaDistancias.containsKey(vecino)){ // Si el vecino no ha sido visitado
                         // Agrega el vecino a la cola y asigna una distancia igual a la del nodo actual + 1
                         cola.add(vecino);
-                        mapaDistancias.put(vecino, mapaDistancias.get(actual)+1); //TODO solucionar fallo +1
+                        mapaDistancias.put(vecino, mapaDistancias.get(actual)+1);
                     }
                 }
             }
