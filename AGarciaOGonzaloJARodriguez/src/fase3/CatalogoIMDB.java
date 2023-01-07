@@ -3,6 +3,9 @@ package fase3;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class CatalogoIMDB {
 
@@ -209,4 +212,96 @@ public class CatalogoIMDB {
         }
         return pelicula;
     }
+
+
+    /*
+     * 
+        * 
+        * 
+        olarizu: hay que mirar el primer pdf de grafos para esto
+        porque el ejercicio resulto que tiene ella lo tiene hecho con grafos,
+        y le funciona y tiene sentido. 
+        no se si tenemos que crear o no nosotros el grafo o que. 
+        luego resolvemos esto y en principio el c esta hecho
+ 
+     /**
+        * Devuelve la distancia mínima entre dos intérpretes dados.
+        * @param inter1: nombre del primer intérprete
+        * @param inter2: nombre del segundo intérprete
+        * @return: distancia mínima entre ambos intérpretes. En caso de que no
+        * estén conectados, devuelve -1.
+        */
+        public int distancia(String inter1, String inter2) {
+            HashMap<String,Integer> conectados = new HashMap<String, Integer>();
+            Queue<String> cola = new LinkedList<String>();
+            cola.add(inter1);
+            conectados.put(inter1,0);
+
+            boolean encontrado=false;
+
+            while(!cola.isEmpty() && !encontrado){
+                String inter = cola.remove();
+                if (inter.getName().equals(inter2.getName())){
+                    encontrado=true;
+                }
+                else{
+                    for (String aux:inter.getEnlaces()) {
+                        if (!conectados.containsKey(inter)){
+                            cola.add(aux);
+                            conectados.put(aux, conectados.get(inter)+1);
+                        }
+
+                    }
+                }
+            }
+            if(encontrado){
+                return conectados.get(inter2);
+            }
+            else return -1;
+
+        }
+        /**
+        * Imprime el camino más corto entre dos intérpretes. Si no existe camino,
+        * imprime un mensaje indicando este hecho.
+        * @param inter1: nombre del primer intérprete
+        * @param inter2: nombre del segundo intérprete
+        */
+        public void imprimirCamino(String inter1, String inter2){
+            LinkedList<String> resultado = new LinkedList<String>();
+            HashMap<String,String> conectados = new HashMap<String,String>();
+            Queue<String> cola = new LinkedList<String>();
+
+            cola.add(inter1);
+            conectados.put(inter1, null);
+
+            boolean encontrado= false;
+
+            while (!cola.isEmpty()&&!encontrado){
+                String inter = cola.remove();
+                if (inter.getName().equals(inter2.getName())){
+                    encontrado=true;
+                } else {
+                    for (String aux:inter.getEnlaces()){
+                        if (!conectados.containsKey(aux)) {
+                            cola.add(aux);
+                            conectados.put(aux,inter);
+                        }
+                    }
+                }
+            }
+            if (encontrado){
+                String actual = inter2;
+                while(actual!=null){
+                    resultado.addFirst(actual.getNombre());
+                    actual=conectados.get(actual);
+                }
+            }
+            if (!resultado.isEmpty()){
+                System.out.println(resultado);
+            }else{
+                System.out.println("no existe camino");
+            }
+            
+        }
+
 }
