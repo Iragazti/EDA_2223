@@ -13,7 +13,7 @@ public class HashMapInterpretes implements InterfazInterpretes {
         mapa.put(inter.getNombre(),inter);
 
     }
-    //////se hacen con pruebas lineales?
+    //mapa.get ya tiene internamente la prueba lineal
 	public Interprete buscarInterprete (String sNombre){
         return mapa.get(sNombre);
     }
@@ -21,7 +21,6 @@ public class HashMapInterpretes implements InterfazInterpretes {
         return mapa.remove(nombre);
     }
 
-    //// estas no se como se hacen
     public int size(){
         return mapa.size();
 
