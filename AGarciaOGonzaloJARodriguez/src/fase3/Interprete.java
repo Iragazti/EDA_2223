@@ -1,6 +1,7 @@
 package fase3;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class Interprete implements Comparable<Interprete>{
     
@@ -75,6 +76,7 @@ public class Interprete implements Comparable<Interprete>{
     public HashSet<Interprete> obtenerAdyacentes(){
         Pelicula peliculaActual;
         adyacentes = new HashSet<>();
+        HashSet<Pelicula> peliculas = new HashSet<Pelicula>();
         for (int i = 0; i < peliculasHechas.size(); i++) {
             peliculaActual = peliculasHechas.getPelicula(i);
             ListaInterpretes listaInter = peliculaActual.getInterpretes();

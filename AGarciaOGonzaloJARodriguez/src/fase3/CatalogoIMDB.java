@@ -8,6 +8,7 @@ import javax.management.Descriptor;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
@@ -211,37 +212,32 @@ public class CatalogoIMDB {
     }
 
 
-    /*
-     * 
-        * 
-        * 
-        olarizu: hay que mirar el primer pdf de grafos para esto
+        /** olarizu: hay que mirar el primer pdf de grafos para esto
         porque el ejercicio resulto que tiene ella lo tiene hecho con grafos,
         y le funciona y tiene sentido. 
         no se si tenemos que crear o no nosotros el grafo o que. 
-        luego resolvemos esto y en principio el c esta hecho
+        luego resolvemos esto y en principio el c esta hecho */
  
-     /**
-        * Devuelve la distancia mínima entre dos intérpretes dados.
-        * @param inter1: nombre del primer intérprete
-        * @param inter2: nombre del segundo intérprete
-        * @return: distancia mínima entre ambos intérpretes. En caso de que no
-        * estén mapaDistancias, devuelve -1.
-        */
+        /**
+         * Devuelve la distancia mínima entre dos intérpretes dados.
+         * @param origen nombre del primer intérprete
+         * @param destino nombre del segundo intérprete
+         * @return distancia mínima entre ambos intérpretes. En caso de que no
+         * estén conectados, devuelve -1.
+         */
         public int distancia(String origen, String destino) {
             // Crea un mapa para almacenar la distancia de cada nodo al nodo inicial
             Map<Interprete,Integer> mapaDistancias = new HashMap<Interprete, Integer>();
-            //Cola para almacenar nodos visitados
+            // Cola para almacenar nodos visitados
             Queue<Interprete> cola = new LinkedList<Interprete>();
         
             Interprete interpreteO = this.listaInterpretes.buscarInterprete(origen);
             Interprete interpreteD = this.listaInterpretes.buscarInterprete(destino);
             
-            boolean encontrado=false;
             mapaDistancias.put(interpreteO, 0);
             cola.add(interpreteO);
 
-            while(!cola.isEmpty() && !encontrado){
+            while(!cola.isEmpty()){
                 // Toma el primer nodo de la cola
                 Interprete actual = cola.poll();
                 
@@ -259,6 +255,8 @@ public class CatalogoIMDB {
             // Si no se ha encontrado el nodo destino, devuelve -1
             return -1;
         }
+
+
         /**
         * Imprime el camino más corto entre dos intérpretes. Si no existe camino,
         * imprime un mensaje indicando este hecho.
@@ -267,7 +265,7 @@ public class CatalogoIMDB {
         */
         public void imprimirCamino(String inter1, String inter2){
             LinkedList<Interprete> resultado = new LinkedList<Interprete>();
-            HashMap<String,Interprete> mapaDistancias = new HashMap<String,Interprete>();
+            Map<String,Interprete> mapaDistancias = new HashMap<String,Interprete>();
             Queue<Interprete> cola = new LinkedList<Interprete>();
             Interprete interprete1 = this.listaInterpretes.buscarInterprete(inter1);
             Interprete interprete2 = this.listaInterpretes.buscarInterprete(inter2);
@@ -278,14 +276,14 @@ public class CatalogoIMDB {
             boolean encontrado = false;
 
             while (!cola.isEmpty()&&!encontrado){
-                Interprete inter = cola.remove();
-                if (inter.getNombre().equals(interprete2.getNombre())){
+                Interprete actual = cola.remove();
+                if (actual.getNombre().equals(interprete2.getNombre())){
                     encontrado=true;
                 } else {
-                    for (Interprete aux : inter.obtenerAdyacentes()){
+                    for (Interprete aux : actual.obtenerAdyacentes()){
                         if (!mapaDistancias.containsKey(aux)) {
                             cola.add(aux);
-                            mapaDistancias.put(aux.getNombre(),inter);
+                            mapaDistancias.put(aux.getNombre(),actual);
                         }
                     }
                 }
@@ -294,11 +292,14 @@ public class CatalogoIMDB {
                 Interprete actual = interprete2;
                 while(actual!=null){
                     resultado.addFirst(actual);
-                    actual=mapaDistancias.get(actual);
+                    actual=mapaDistancias.get(actual.getNombre());
                 }
             }
             if (!resultado.isEmpty()){
-                System.out.println(resultado);
+                for (Interprete interprete : resultado) {
+                    System.out.print(interprete.getNombre() + ", ");
+                }
+                System.out.println("");
             }else{
                 System.out.println("no existe camino");
             }

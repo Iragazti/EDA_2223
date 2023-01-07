@@ -8,6 +8,7 @@ public class AplicacionIMDB {
 	//private Scanner sc = null;
 	private static String strPeli, strInter;
 	private static CatalogoIMDB catalogo;
+	private static String inter1, inter2;
 	public static AplicacionIMDB getInstance(){
 		if (appIMDB == null) {
 			appIMDB = new AplicacionIMDB();
@@ -20,17 +21,17 @@ public class AplicacionIMDB {
 		catalogo = new CatalogoIMDB();
         System.out.println("¡Bienvenid@ a la aplicación de IMDB!");
 		System.out.println("Cargando peliculas...");
-		catalogo.cargarPeliculas("C:\\Users\\agust\\Desktop\\smallerfiles\\films_medium.txt");
+		catalogo.cargarPeliculas("C:\\Users\\agust\\Desktop\\smallerfiles\\films_tiny.txt");
 		System.out.println("En el catálogo hay "+ catalogo.getPeliculas().size() +" películas.");
 		System.out.println("Cargando interpretes...");
-		catalogo.cargarInterpretes("C:\\Users\\agust\\Desktop\\smallerfiles\\cast_medium.txt");
+		catalogo.cargarInterpretes("C:\\Users\\agust\\Desktop\\smallerfiles\\cast_tiny.txt");
 		System.out.println("En el catálogo hay "+ catalogo.getInterpretes().size() + " interpretes.");
 		//Men�
 		Scanner sc = new Scanner(System.in);
 		int opcion=-1;
 		
 		while(opcion!=0) {
-			strPeli = strInter = null;
+			strPeli = strInter = inter1 = inter2 = null;
 			System.out.println("Escoja una opci�n:");
 			System.out.println("1. Mostrar informaci�n de pel�cula");
 			System.out.println("2. Mostrar informaci�n de int�rprete");
@@ -58,6 +59,10 @@ public class AplicacionIMDB {
 				case 3:
 					System.out.println("Introduzca el nombre de una película:");
 					strPeli = sc.nextLine();
+					if (strPeli == null) {
+						System.out.println("No se ha encontrado la pelicula.");
+						break;
+					}
 					System.out.println("Introducir puntuación entre 0.0 y 10.0:");
 					float puntuacion = sc.nextFloat();
 					catalogo.anadirVoto(strPeli, puntuacion);
@@ -79,7 +84,6 @@ public class AplicacionIMDB {
 				 *	y se le indicará cuál es la distancia mínima entre dichos intérpretes.
 				 */
 				case 5:
-					String inter1, inter2;
 					System.out.println("Deberás escribir el nombre de dos intérpretes.");
 					System.out.println("Escribe el nombre del primer intérprete:");
 					inter1 = sc.nextLine();
@@ -94,7 +98,12 @@ public class AplicacionIMDB {
 				 * 	y se le mostrará el camino más corto entre dichos intérpretes
 				 */
 				case 6:
-				
+					System.out.println("Deberás escribir el nombre de dos intérpretes.");
+					System.out.println("Escribe el nombre del primer intérprete:");
+					inter1 = sc.nextLine();
+					System.out.println("Escribe el nombre del segundo intérprete:");
+					inter2 = sc.nextLine();
+					catalogo.imprimirCamino(inter1, inter2);
 					break;
 				case 0:
 					break;
