@@ -36,6 +36,8 @@ public class AplicacionIMDB {
 			System.out.println("2. Mostrar informaci�n de int�rprete");
 			System.out.println("3. A�adir voto a pel�cula");
 			System.out.println("4. Eliminar película");
+			System.out.println("5. Indicar la distancia mínima entre dos intérpretes");
+			System.out.println("6. Camino más corto entre dos intérpretes");
 			System.out.println("0. Salir");
 			sc = new Scanner(System.in);
 			opcion = Integer.parseInt(sc.nextLine());
@@ -72,7 +74,28 @@ public class AplicacionIMDB {
 						System.out.println("La película no se ha encontrado en el catálogo");
 					}
 					break;
+				/**
+				 * Cuando escoja la opción 5, se le pedirá que introduzca dos nombres de intérprete
+				 *	y se le indicará cuál es la distancia mínima entre dichos intérpretes.
+				 */
+				case 5:
+					String inter1, inter2;
+					System.out.println("Deberás escribir el nombre de dos intérpretes.");
+					System.out.println("Escribe el nombre del primer intérprete:");
+					inter1 = sc.nextLine();
+					System.out.println("Escribe el nombre del segundo intérprete:");
+					inter2 = sc.nextLine();
+					int distancia = catalogo.distancia(inter1, inter2);
+					System.out.println(String.format("la distancia entre %s y %s es: %d", inter1, inter2, distancia));
+					break;
 
+				/**
+				 * Cuando escoja la opción 6, se le pedirá que introduzca dos nombres de intérprete
+				 * 	y se le mostrará el camino más corto entre dichos intérpretes
+				 */
+				case 6:
+				
+					break;
 				case 0:
 					break;
 				default:
