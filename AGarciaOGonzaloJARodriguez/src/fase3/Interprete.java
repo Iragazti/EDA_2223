@@ -1,5 +1,7 @@
 package fase3;
 
+import java.util.HashSet;
+
 public class Interprete implements Comparable<Interprete>{
     
     private String nombre;
@@ -63,6 +65,17 @@ public class Interprete implements Comparable<Interprete>{
 		
 		return nombre.compareTo(i.nombre );		
 	}
+
+
+     /**
+    * Devuelve un HashSet con todos los adyacentes del intérprete, es decir,
+    * aquellos intérpretes con los que ha participado en alguna película.
+    * @return: el HashSet con los intérpretes que son adyacentes.
+    */
+    public HashSet<Interprete> obtenerAdyacentes()
+    {
+        return null;
+    }
 
 
 

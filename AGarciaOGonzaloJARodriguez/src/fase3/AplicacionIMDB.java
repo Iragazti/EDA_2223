@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class AplicacionIMDB {
 	
 	private static AplicacionIMDB appIMDB = null;
-	private Scanner sc = null;
+	//private Scanner sc = null;
 	private static String strPeli, strInter;
 	private static CatalogoIMDB catalogo;
 	public static AplicacionIMDB getInstance(){
