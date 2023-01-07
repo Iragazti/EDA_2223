@@ -3,15 +3,18 @@ package fase3;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
+import java.util.Set;
 
 import javax.management.Descriptor;
 
+
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-
+import java.util.Iterator;
 public class CatalogoIMDB {
 
     private static CatalogoIMDB miCatalogo;
@@ -263,36 +266,48 @@ public class CatalogoIMDB {
         * @param inter1: nombre del primer intérprete
         * @param inter2: nombre del segundo intérprete
         */
-        public void imprimirCamino(String inter1, String inter2){
-            LinkedList<Interprete> resultado = new LinkedList<Interprete>();
-            Map<String,Interprete> mapaDistancias = new HashMap<String,Interprete>();
-            Queue<Interprete> cola = new LinkedList<Interprete>();
-            Interprete interprete1 = this.listaInterpretes.buscarInterprete(inter1);
-            Interprete interprete2 = this.listaInterpretes.buscarInterprete(inter2);
-            
-            cola.add(interprete1);
-            mapaDistancias.put(inter1, null);
+        
+        /**
+        public void imprimirCamino(String origen, String destino){
+             // Crea un mapa para almacenar la distancia de cada nodo al nodo inicial
+             Map<Interprete,Integer> mapaDistancias = new HashMap<Interprete, Integer>();
+             // Cola para almacenar nodos visitados
+             Queue<Interprete> cola = new LinkedList<Interprete>();
+             boolean encontrado = false;
+             Interprete interpreteO = this.listaInterpretes.buscarInterprete(origen);
+             Interprete interpreteD = this.listaInterpretes.buscarInterprete(destino);
+             
+             mapaDistancias.put(interpreteO, 0);
+             cola.add(interpreteO);
+ 
+             while(!cola.isEmpty() && !encontrado){
+                 // Toma el primer nodo de la cola
+                 Interprete actual = cola.poll();
+                 
+                 if (actual.compareTo(interpreteD) == 0){// Si es el nodo destino, devuelve la distancia almacenada en el mapa
+                    encontrado = true;
+                 }
+                 for (Interprete vecino:actual.obtenerAdyacentes()) {
+                     if (!mapaDistancias.containsKey(vecino)){ // Si el vecino no ha sido visitado
+                         // Agrega el vecino a la cola y asigna una distancia igual a la del nodo actual + 1
+                         cola.add(vecino);
+                         mapaDistancias.put(vecino, mapaDistancias.get(actual)+1);
+                     }
+                 }
+             }
 
-            boolean encontrado = false;
 
-            while (!cola.isEmpty()&&!encontrado){
-                Interprete actual = cola.remove();
-                if (actual.getNombre().equals(interprete2.getNombre())){
-                    encontrado=true;
-                } else {
-                    for (Interprete aux : actual.obtenerAdyacentes()){
-                        if (!mapaDistancias.containsKey(aux)) {
-                            cola.add(aux);
-                            mapaDistancias.put(aux.getNombre(),actual);
-                        }
-                    }
-                }
-            }
             if (encontrado){
-                Interprete actual = interprete2;
-                while(actual!=null){
+                Interprete actual = interpreteD;
+                Interprete[] arrVisitados = mapaDistancias.toArray(new Interprete[mapaDistancias.size()]);
+                int i = 0;
+                while(actual!=null && i < visitados.size()){
+                    
                     resultado.addFirst(actual);
-                    actual=mapaDistancias.get(actual.getNombre());
+                    
+                    //TODO 
+                    actual=arrVisitados[i];
+                    i++;
                 }
             }
             if (!resultado.isEmpty()){
@@ -305,5 +320,46 @@ public class CatalogoIMDB {
             }
             
         }
-
+         */
+        
+        
+        
+        public void imprimirCamino(String inter1, String inter2) {
+            Map<Interprete, Interprete> resultado = new HashMap<Interprete, Interprete>();
+            Set<Interprete> cola = new HashSet<Interprete>();
+            Interprete interprete1 = this.listaInterpretes.buscarInterprete(inter1);
+            Interprete interprete2 = this.listaInterpretes.buscarInterprete(inter2);
+            resultado.put(interprete1, null);
+            cola.add(interprete1);
+            boolean encontrado = false;
+            while (!cola.isEmpty() && !encontrado) {
+                Iterator<Interprete> it = cola.iterator();
+                Interprete actual = it.next();
+                it.remove();
+                if (actual.equals(interprete2)) {
+                    encontrado = true;
+                } else {
+                    for (Interprete aux : actual.obtenerAdyacentes()) {
+                        if (!resultado.containsKey(aux)) {
+                            cola.add(aux);
+                            resultado.put(aux, actual);
+                        }
+                    }
+                }
+            }
+            if (encontrado) {
+                printPath(resultado, interprete2);
+                System.out.println("");
+            } else {
+                System.out.println("No existe camino");
+            }
+        }
+        
+        private void printPath(Map<Interprete, Interprete> resultado, Interprete i) {
+            if (i == null) {
+                return;
+            }
+            printPath(resultado, resultado.get(i));
+            System.out.print(i.getNombre() + "; ");
+        }
 }

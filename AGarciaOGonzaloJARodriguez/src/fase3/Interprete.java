@@ -76,7 +76,6 @@ public class Interprete implements Comparable<Interprete>{
     public HashSet<Interprete> obtenerAdyacentes(){
         Pelicula peliculaActual;
         adyacentes = new HashSet<>();
-        HashSet<Pelicula> peliculas = new HashSet<Pelicula>();
         for (int i = 0; i < peliculasHechas.size(); i++) {
             peliculaActual = peliculasHechas.getPelicula(i);
             ListaInterpretes listaInter = peliculaActual.getInterpretes();
