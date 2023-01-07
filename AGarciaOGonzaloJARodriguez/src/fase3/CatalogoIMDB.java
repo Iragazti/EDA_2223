@@ -16,7 +16,7 @@ public class CatalogoIMDB {
     public CatalogoIMDB(){
         super();
         this.listaPeliculas = new ListaPeliculas();
-        this.listaInterpretes = new ABBInterpretes();
+        this.listaInterpretes = new HashMapInterpretes();
     }
 
     public static CatalogoIMDB getInstance() {
