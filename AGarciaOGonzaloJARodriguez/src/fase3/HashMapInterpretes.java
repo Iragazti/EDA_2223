@@ -1,9 +1,10 @@
 package fase3;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class HashMapInterpretes implements InterfazInterpretes {
-    private HashMap<String,Interprete> mapa;
+    private Map<String,Interprete> mapa;
 
     public HashMapInterpretes(){
         this.mapa= new HashMap<String,Interprete>();
@@ -22,10 +23,10 @@ public class HashMapInterpretes implements InterfazInterpretes {
 
     //// estas no se como se hacen
     public int size(){
-        return 0;
+        return mapa.size();
 
     }
 	public boolean isEmpty(){
-        return false;
+        return mapa.isEmpty();
     }
 }
