@@ -103,7 +103,7 @@ public class AplicacionIMDB {
 					inter1 = sc.nextLine();
 					System.out.println("Escribe el nombre del segundo intérprete:");
 					inter2 = sc.nextLine();
-					catalogo.imprimirCamino2(inter1, inter2);
+					catalogo.imprimirCamino(inter1, inter2);
 					break;
 				case 0:
 					break;
