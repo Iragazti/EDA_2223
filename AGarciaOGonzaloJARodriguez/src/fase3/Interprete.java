@@ -7,11 +7,12 @@ public class Interprete implements Comparable<Interprete>{
     private String nombre;
     private double rating;
     private ListaPeliculas peliculasHechas;
-
+    private HashSet<Interprete> adyacentes;
     public Interprete (String nombre , ListaPeliculas peliculasHechas) {
         super();
         this.nombre = nombre;
         this.peliculasHechas = peliculasHechas;
+        this.adyacentes = obtenerAdyacentes();
     }
     
     /**
@@ -72,12 +73,24 @@ public class Interprete implements Comparable<Interprete>{
     * aquellos intérpretes con los que ha participado en alguna película.
     * @return: el HashSet con los intérpretes que son adyacentes.
     */
-    public HashSet<Interprete> obtenerAdyacentes()
-    {
-        return null;
+    private HashSet<Interprete> obtenerAdyacentes(){
+        Pelicula peliculaActual;
+        adyacentes = new HashSet<>();
+        for (int i = 0; i < peliculasHechas.size(); i++) {
+            peliculaActual = peliculasHechas.getPelicula(i);
+            ListaInterpretes listaInter = peliculaActual.getInterpretes();
+            for (int j = 0; j < listaInter.size(); j++) {
+                adyacentes.add(listaInter.getInterprete(i));
+            }
+        }
+        return adyacentes;
+    }
+    
+    public HashSet<Interprete> getAdyacentes(){
+        return this.adyacentes;
     }
 
-
+    
 
 
    
