@@ -68,7 +68,7 @@ public class Interprete implements Comparable<Interprete>{
 	}
 
 
-     /**
+    /**
     * Devuelve un HashSet con todos los adyacentes del intérprete, es decir,
     * aquellos intérpretes con los que ha participado en alguna película.
     * @return: el HashSet con los intérpretes que son adyacentes.
@@ -86,15 +86,5 @@ public class Interprete implements Comparable<Interprete>{
         }
         return adyacentes;
     }
-    
-    public HashSet<Interprete> getAdyacentes(){
-        this.adyacentes = obtenerAdyacentes();
-        return this.adyacentes;
-    }
-
-    
-
-
-   
     
 }

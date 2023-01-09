@@ -23,7 +23,6 @@ public class HashMapInterpretes implements InterfazInterpretes {
 
     public int size(){
         return mapa.size();
-
     }
 	public boolean isEmpty(){
         return mapa.isEmpty();

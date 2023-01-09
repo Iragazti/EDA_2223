@@ -79,6 +79,7 @@ public class AplicacionIMDB {
 						System.out.println("La película no se ha encontrado en el catálogo");
 					}
 					break;
+				
 				/**
 				 * Cuando escoja la opción 5, se le pedirá que introduzca dos nombres de intérprete
 				 *	y se le indicará cuál es la distancia mínima entre dichos intérpretes.
@@ -92,7 +93,7 @@ public class AplicacionIMDB {
 					int distancia = catalogo.distancia(inter1, inter2);
 					System.out.println(String.format("la distancia entre %s y %s es: %d", inter1, inter2, distancia));
 					break;
-
+				//Dentro del switch
 				/**
 				 * Cuando escoja la opción 6, se le pedirá que introduzca dos nombres de intérprete
 				 * 	y se le mostrará el camino más corto entre dichos intérpretes

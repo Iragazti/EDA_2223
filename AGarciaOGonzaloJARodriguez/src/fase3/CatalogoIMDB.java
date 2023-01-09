@@ -276,7 +276,7 @@ public class CatalogoIMDB {
                 }
             }
             if (encontrado) {
-                printPath(resultado, interprete2);
+                imprimirCaminoR(resultado, interprete2);
             } else {
                 System.out.println("no existe camino");
             }
@@ -286,11 +286,11 @@ public class CatalogoIMDB {
          * @param resultado un map que contiene el camino de interpretes
          * @param i el nodo destino
          */
-        private void printPath(Map<Interprete, Interprete> resultado, Interprete i) {
+        private void imprimirCaminoR(Map<Interprete, Interprete> resultado, Interprete i) {
             if (i == null) {
                 return;
             }
-            printPath(resultado, resultado.get(i));
+            imprimirCaminoR(resultado, resultado.get(i));
             System.out.print(i.getNombre() + ", ");
         }
 }
